@@ -1,28 +1,7 @@
+import { HeroTags } from "@/components/HeroTags";
+
 const NAV_LINKS = ["Speakers", "Schedule", "Sponsors", "Team"];
 
-// Scattered audience/topic tags at the foot of the hero. `rotate` is a Tailwind
-// arbitrary value so the pile looks hand-tossed rather than grid-aligned.
-const TAGS: { label: string; className: string; rotate: string }[] = [
-  { label: "Hackathon", className: "bg-[#E9E9E9]", rotate: "-rotate-[7deg]" },
-  { label: "Cybersecurity", className: "bg-[#A8D8F0]", rotate: "-rotate-[14deg]" },
-  { label: "Gemini", className: "bg-[#FCC934]", rotate: "-rotate-[72deg]" },
-  { label: "Firebase studio", className: "bg-[#2E9BE8] text-white", rotate: "rotate-[2deg]" },
-  { label: "Cloud", className: "bg-[#F06898] text-white", rotate: "-rotate-[4deg]" },
-  { label: "AI Enthusiast", className: "bg-[#CDE9F7]", rotate: "rotate-[3deg]" },
-  { label: "VR & AR", className: "bg-[#FDE8A8]", rotate: "-rotate-[5deg]" },
-  { label: "AI Enthusiast", className: "bg-[#C8EBD4]", rotate: "rotate-[4deg]" },
-  { label: "Web3 Enthusiasts", className: "bg-[#FADCE1]", rotate: "-rotate-[12deg]" },
-  { label: "AI Developers", className: "bg-[#C5E8CE]", rotate: "rotate-[2deg]" },
-  { label: "Product Designers", className: "bg-[#FDE9B8]", rotate: "rotate-[6deg]" },
-  { label: "Web", className: "bg-[#57BB63] text-white", rotate: "-rotate-[9deg]" },
-  { label: "Developers", className: "bg-[#E9E9E9]", rotate: "rotate-[8deg]" },
-  { label: "Vibe coding", className: "bg-[#F0559A] text-white", rotate: "-rotate-[6deg]" },
-  { label: "+ more", className: "bg-[#CDE9F7]", rotate: "rotate-[11deg]" },
-  { label: "Brand Designers", className: "bg-[#FADCE1]", rotate: "-rotate-[3deg]" },
-  { label: "Mobile", className: "bg-[#FBC02D]", rotate: "rotate-[7deg]" },
-  { label: "Techies", className: "bg-[#C8EBD4]", rotate: "-rotate-[5deg]" },
-  { label: "AI/ML", className: "bg-[#4CAF50] text-white", rotate: "rotate-[10deg]" },
-];
 
 function ArrowPill({ href, children }: { href: string; children: React.ReactNode }) {
   return (
@@ -81,7 +60,7 @@ export default function HomePage() {
         </div>
       </header>
 
-      <main className="flex flex-1 flex-col items-center px-5 pt-12 text-center sm:pt-16">
+      <main className="flex flex-col items-center px-5 pt-12 text-center sm:pt-16">
         <p className="text-xs font-medium text-ink/60">headline Sponsor</p>
         {/* Placeholder slot — drop the real sponsor wordmark in once it's confirmed. */}
         <p className="mt-2 text-xl font-bold tracking-tight text-ink/30">your logo here</p>
@@ -99,17 +78,12 @@ export default function HomePage() {
           <ArrowPill href="#tickets">Get Tickets Day 3</ArrowPill>
         </div>
 
-        <ul className="mx-auto mt-14 flex max-w-5xl flex-wrap items-center justify-center gap-x-3 gap-y-1 pb-8">
-          {TAGS.map((tag, i) => (
-            <li
-              key={`${tag.label}-${i}`}
-              className={`${tag.className} ${tag.rotate} whitespace-nowrap rounded-full border border-ink/10 px-5 py-2.5 text-xs font-semibold shadow-sm sm:text-sm`}
-            >
-              {tag.label}
-            </li>
-          ))}
-        </ul>
       </main>
+
+      {/* Drag the pills around — matter-js drops them into a pile here. */}
+      <div className="relative w-full flex-1 min-h-[240px]">
+        <HeroTags />
+      </div>
     </div>
   );
 }
