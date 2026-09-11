@@ -1,25 +1,25 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { headingFont, bodyFont, monoFont } from "@/lib/fonts";
+import { Navbar } from "@/components/Navbar";
+import { SocialDock } from "@/components/SocialDock";
+import { SiteBackground } from "@/components/SiteBackground";
+import { SITE_NAME, SITE_TAGLINE } from "@/lib/constants";
 import "./globals.css";
 
-// Stand-in for Google Sans (not freely licensed) — swap via next/font/local when we have the .woff2 files.
-const sans = Poppins({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-sans",
-  display: "swap",
-});
-
 export const metadata: Metadata = {
-  title: "DevFest Chandigarh 2026",
-  description:
-    "Join us at DevFest Chandigarh 2026 — Chandigarh's largest tech celebration of the year.",
+  title: SITE_NAME,
+  description: SITE_TAGLINE,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={sans.variable}>
-      <body>{children}</body>
+    <html lang="en" className={`${headingFont.variable} ${bodyFont.variable} ${monoFont.variable}`}>
+      <body className="flex min-h-dvh flex-col">
+        <SiteBackground />
+        <Navbar />
+        <main className="flex-1">{children}</main>
+        <SocialDock />
+      </body>
     </html>
   );
 }

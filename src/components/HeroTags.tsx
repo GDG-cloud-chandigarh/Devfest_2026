@@ -3,43 +3,44 @@
 import { useEffect, useState } from "react";
 import { Gravity, MatterBody } from "@/components/ui/gravity";
 
-// Audience/topic tags that pile up at the foot of the hero. Drag them around.
-const TAGS: { label: string; className: string }[] = [
-  { label: "Hackathon", className: "bg-[#E9E9E9]" },
-  { label: "Cybersecurity", className: "bg-[#A8D8F0]" },
-  { label: "Gemini", className: "bg-[#FCC934]" },
-  { label: "Firebase studio", className: "bg-[#2E9BE8] text-white" },
-  { label: "Cloud", className: "bg-[#F06898] text-white" },
-  { label: "AI Enthusiast", className: "bg-[#CDE9F7]" },
-  { label: "VR & AR", className: "bg-[#FDE8A8]" },
-  { label: "AI Enthusiast", className: "bg-[#C8EBD4]" },
-  { label: "Web3 Enthusiasts", className: "bg-[#FADCE1]" },
-  { label: "AI Developers", className: "bg-[#C5E8CE]" },
-  { label: "Product Designers", className: "bg-[#FDE9B8]" },
-  { label: "Web", className: "bg-[#57BB63] text-white" },
-  { label: "Developers", className: "bg-[#E9E9E9]" },
-  { label: "Vibe coding", className: "bg-[#F0559A] text-white" },
-  { label: "+ more", className: "bg-[#CDE9F7]" },
-  { label: "Brand Designers", className: "bg-[#FADCE1]" },
-  { label: "Mobile", className: "bg-[#FBC02D]" },
-  { label: "Techies", className: "bg-[#C8EBD4]" },
-  { label: "AI/ML", className: "bg-[#4CAF50] text-white" },
+const HERO_TAGS = [
+  { label: "Hackathon", bg: "bg-[#E9E9E9]", text: "text-neutral-dark" },
+  { label: "Cybersecurity", bg: "bg-[#A8D8F0]", text: "text-neutral-dark" },
+  { label: "Gemini", bg: "bg-google-yellow", text: "text-neutral-dark" },
+  { label: "Firebase studio", bg: "bg-google-blue", text: "text-neutral-dark" },
+  { label: "Cloud", bg: "bg-[#F06898]", text: "text-neutral-dark" },
+  { label: "AI Enthusiast", bg: "bg-[#CDE9F7]", text: "text-neutral-dark" },
+  { label: "VR & AR", bg: "bg-[#FDE8A8]", text: "text-neutral-dark" },
+  { label: "AI Enthusiast", bg: "bg-[#C8EBD4]", text: "text-neutral-dark" },
+  { label: "Web3 Enthusiasts", bg: "bg-[#FADCE1]", text: "text-neutral-dark" },
+  { label: "AI Developers", bg: "bg-[#C5E8CE]", text: "text-neutral-dark" },
+  { label: "Product Designers", bg: "bg-[#FDE9B8]", text: "text-neutral-dark" },
+  { label: "Web", bg: "bg-google-green", text: "text-neutral-dark" },
+  { label: "Developers", bg: "bg-[#E9E9E9]", text: "text-neutral-dark" },
+  { label: "Vibe coding", bg: "bg-[#F0559A]", text: "text-neutral-dark" },
+  { label: "+ more", bg: "bg-[#CDE9F7]", text: "text-neutral-dark" },
+  { label: "Brand Designers", bg: "bg-[#FADCE1]", text: "text-neutral-dark" },
+  { label: "Mobile", bg: "bg-google-yellow", text: "text-neutral-dark" },
+  { label: "Techies", bg: "bg-[#C8EBD4]", text: "text-neutral-dark" },
+  { label: "AI/ML", bg: "bg-google-green", text: "text-neutral-dark" },
 ];
 
-const PILL = "whitespace-nowrap rounded-full border border-ink/10 px-5 py-2.5 text-xs font-semibold shadow-sm sm:text-sm";
+// Smaller than the GDG hero's pills — 19 tags instead of 8 have to share the screen.
+const PILL = "rounded-full border-2 border-neutral-dark px-4 py-2 text-xs font-bold sm:px-6 sm:py-3 sm:text-base md:px-8 md:py-4 md:text-lg lg:text-xl";
 
 export function HeroTags() {
   const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
-    setReducedMotion(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    const query = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReducedMotion(query.matches);
   }, []);
 
   if (reducedMotion) {
     return (
-      <div className="flex flex-wrap items-end justify-center gap-2 p-4">
-        {TAGS.map((tag, i) => (
-          <span key={`${tag.label}-${i}`} className={`${tag.className} ${PILL}`}>
+      <div className="absolute inset-0 flex flex-wrap content-center justify-center gap-3 p-8">
+        {HERO_TAGS.map((tag, i) => (
+          <span key={`${tag.label}-${i}`} className={`${PILL} ${tag.bg} ${tag.text}`}>
             {tag.label}
           </span>
         ))}
@@ -49,25 +50,22 @@ export function HeroTags() {
 
   return (
     <>
-      {/* Screen readers get the plain list; the physics layer is decorative. */}
       <ul className="sr-only">
-        {TAGS.map((tag, i) => (
+        {HERO_TAGS.map((tag, i) => (
           <li key={`${tag.label}-${i}`}>{tag.label}</li>
         ))}
       </ul>
       <div className="absolute inset-0" aria-hidden="true">
         <Gravity gravity={{ x: 0, y: 1 }} className="h-full w-full">
-          {TAGS.map((tag, i) => (
+          {HERO_TAGS.map((tag, i) => (
             <MatterBody
               key={`${tag.label}-${i}`}
-              matterBodyOptions={{ friction: 0.6, restitution: 0.15 }}
-              x={`${8 + ((i * 17) % 80)}%`}
-              y={`${-20 - i * 8}%`}
+              matterBodyOptions={{ friction: 0.5, restitution: 0.2 }}
+              x={`${10 + ((i * 17) % 80)}%`}
+              y={`${5 + (i % 4) * 8}%`}
               angle={((i % 5) - 2) * 12}
             >
-              <div className={`${tag.className} ${PILL} cursor-grab active:cursor-grabbing`}>
-                {tag.label}
-              </div>
+              <div className={`${PILL} ${tag.bg} ${tag.text} shadow-md`}>{tag.label}</div>
             </MatterBody>
           ))}
         </Gravity>

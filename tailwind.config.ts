@@ -1,19 +1,26 @@
 import type { Config } from "tailwindcss";
+import typography from "@tailwindcss/typography";
 
 const config: Config = {
-  content: ["./src/**/*.{ts,tsx}"],
+  content: ["./src/**/*.{ts,tsx}", "./content/**/*.{ts,tsx,mdx}"],
   theme: {
     extend: {
       colors: {
-        cream: "#FCF2F2",
-        ink: "#1A1A1A",
+        "google-blue": "#4285F4",
+        "google-green": "#34A853",
+        "google-red": "#EA4335",
+        "google-yellow": "#FBBC05",
+        "neutral-dark": "#1E1E1E",
+        "neutral-light": "#F0F0F0",
       },
       fontFamily: {
-        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
+        heading: ["var(--font-heading)", "system-ui", "sans-serif"],
+        body: ["var(--font-body)", "system-ui", "sans-serif"],
+        mono: ["var(--font-mono)", "monospace"],
       },
     },
   },
-  plugins: [],
+  plugins: [typography],
 };
 
 export default config;
