@@ -26,7 +26,7 @@ const HERO_TAGS = [
 ];
 
 // Smaller than the GDG hero's pills — 19 tags instead of 8 have to share the screen.
-const PILL = "rounded-full border-2 border-neutral-dark px-4 py-2 text-xs font-bold sm:px-6 sm:py-3 sm:text-base md:px-8 md:py-4 md:text-lg lg:text-xl";
+const PILL = "rounded-full border-2 border-neutral-dark px-5 py-3 text-sm font-bold sm:px-8 sm:py-5 sm:text-xl md:px-12 md:py-6 md:text-2xl lg:px-14 lg:py-7 lg:text-3xl";
 
 export function HeroTags() {
   const [reducedMotion, setReducedMotion] = useState(false);
