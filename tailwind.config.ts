@@ -12,6 +12,7 @@ const config: Config = {
         "google-yellow": "#FBBC04",
         "neutral-dark": "#1E1E1E",
         "neutral-light": "#F0F0F0",
+        cream: "#FCF2F2",
       },
       fontFamily: {
         heading: ["var(--font-heading)", "system-ui", "sans-serif"],

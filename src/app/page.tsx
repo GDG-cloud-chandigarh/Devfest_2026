@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 import { GlowButton } from "@/components/GlowButton";
+import { FormatsGrid } from "@/components/FormatsGrid";
 import { RecapsMarquee } from "@/components/RecapsMarquee";
 import { DynamicTextSlider } from "@/components/ui/dynamic-text-slider";
 import { SITE_TAGLINE, TICKETS_URL } from "@/lib/constants";
@@ -22,6 +23,7 @@ export default function HomePage() {
       </section>
 
       <RecapsMarquee />
+      <FormatsGrid />
     </>
   );
 }

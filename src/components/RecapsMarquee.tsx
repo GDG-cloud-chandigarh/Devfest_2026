@@ -1,7 +1,8 @@
 import Image from "next/image";
-import { Asterisk, ArrowRight, Globe, Waves } from "lucide-react";
+import { CornerHandles } from "@/components/CornerHandles";
 import { GlowButton } from "@/components/GlowButton";
 import { MarqueeTrack } from "@/components/MarqueeTrack";
+import { SectionHeader } from "@/components/SectionHeader";
 import { EVENTS_URL } from "@/lib/constants";
 
 /**
@@ -23,23 +24,6 @@ const RECAP_ITEMS: ({ photo: string; alt: string } | { color: string; stat: stri
 // Height is driven off the viewport so the band fills the screen; the 3:4 ratio
 // then sets the width, which keeps every item portrait at any size.
 const ITEM_SIZE = "h-[46vh] aspect-[3/4] shrink-0 sm:h-[54vh] lg:h-[60vh]";
-
-const CORNERS = ["-left-1.5 -top-1.5", "-right-1.5 -top-1.5", "-left-1.5 -bottom-1.5", "-right-1.5 -bottom-1.5"];
-
-/** Decorative squares that make each item read like a selected design-tool node. */
-function CornerHandles() {
-  return (
-    <>
-      {CORNERS.map((position) => (
-        <span
-          key={position}
-          aria-hidden="true"
-          className={`absolute ${position} h-3 w-3 rounded-[2px] border border-neutral-dark bg-white`}
-        />
-      ))}
-    </>
-  );
-}
 
 function RecapItem({ item }: { item: (typeof RECAP_ITEMS)[number] }) {
   return (
@@ -70,27 +54,7 @@ function RecapItem({ item }: { item: (typeof RECAP_ITEMS)[number] }) {
 export function RecapsMarquee() {
   return (
     <section className="flex min-h-dvh flex-col justify-center bg-neutral-dark py-12 text-white">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-4 px-4 sm:px-8">
-        <h2 className="font-heading text-xl font-bold sm:text-2xl">Previous Events:</h2>
-        <span className="flex items-center gap-3">
-          <Image src="/images/gdg_logo.png" alt="" width={96} height={96} className="h-10 w-auto sm:h-12" />
-          <span className="text-base leading-tight text-white/80 sm:text-lg">
-            Google Developer Groups
-            <br />
-            Cloud Chandigarh
-          </span>
-        </span>
-        <span
-          aria-hidden="true"
-          className="ml-auto hidden items-center gap-6 rounded-full bg-neutral-light px-8 py-3 text-neutral-dark lg:flex"
-        >
-          <Asterisk className="h-5 w-5" />
-          <ArrowRight className="h-5 w-5" />
-          <Globe className="h-5 w-5" />
-          <Waves className="h-5 w-5" />
-          <Asterisk className="h-5 w-5" />
-        </span>
-      </div>
+      <SectionHeader title="Previous Events:" />
 
       <MarqueeTrack>
         {[0, 1].map((copy) => (
