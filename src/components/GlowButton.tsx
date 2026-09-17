@@ -4,7 +4,7 @@ import { GlowEffect } from "@/components/ui/glow-effect";
 import { cn } from "@/lib/utils";
 
 /** Google brand palette: blue, green, red, yellow. */
-const GDG_COLORS = ["#4285F4", "#34A853", "#EA4335", "#FBBC05"];
+const GDG_COLORS = ["#4285F4", "#34A853", "#EA4335", "#FBBC04"];
 
 const sizeStyles = {
   sm: { button: "tracking-wide px-5 py-2.5 text-sm", icon: "h-3.5 w-3.5" },

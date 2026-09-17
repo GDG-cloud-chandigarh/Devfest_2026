@@ -56,13 +56,20 @@ export function HeroTags() {
         ))}
       </ul>
       <div className="absolute inset-0" aria-hidden="true">
-        <Gravity gravity={{ x: 0, y: 1 }} className="h-full w-full">
+        {/*
+          No top wall, and every pill starts above the frame on its own row, so
+          they drop in one at a time. Spawning them inside the canvas (as the
+          GDG hero does with 8 small pills) makes 19 pills this size overlap at
+          rest, and Matter resolves that overlap by firing them through the
+          walls, which leaves the hero empty.
+        */}
+        <Gravity gravity={{ x: 0, y: 1 }} addTopWall={false} className="h-full w-full">
           {HERO_TAGS.map((tag, i) => (
             <MatterBody
               key={`${tag.label}-${i}`}
               matterBodyOptions={{ friction: 0.5, restitution: 0.2 }}
-              x={`${10 + ((i * 17) % 80)}%`}
-              y={`${5 + (i % 4) * 8}%`}
+              x={`${8 + ((i * 23) % 84)}%`}
+              y={`${-10 - i * 14}%`}
               angle={((i % 5) - 2) * 12}
             >
               <div className={`${PILL} ${tag.bg} ${tag.text} shadow-md`}>{tag.label}</div>

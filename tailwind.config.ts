@@ -9,7 +9,7 @@ const config: Config = {
         "google-blue": "#4285F4",
         "google-green": "#34A853",
         "google-red": "#EA4335",
-        "google-yellow": "#FBBC05",
+        "google-yellow": "#FBBC04",
         "neutral-dark": "#1E1E1E",
         "neutral-light": "#F0F0F0",
       },
