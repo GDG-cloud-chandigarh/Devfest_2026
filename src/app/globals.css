@@ -20,29 +20,14 @@ h6 {
 }
 
 /*
-  Infinite recap marquee. The track holds two identical copies separated by the
-  track gap (1rem), so sliding by half the track plus half a gap lands copy two
-  exactly where copy one started and the loop is seamless.
+  The recap band scrolls via scrollLeft (see MarqueeTrack), so it needs to be a
+  real scroll container. Hide the bar: the motion already signals it scrolls,
+  and a bar across the dark band reads as a stray rule.
 */
-@keyframes marquee-scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(calc(-50% - 0.5rem));
-  }
+.marquee {
+  scrollbar-width: none;
 }
 
-.marquee-track {
-  animation: marquee-scroll 40s linear infinite;
-}
-
-.marquee:hover .marquee-track {
-  animation-play-state: paused;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track {
-    animation: none;
-  }
+.marquee::-webkit-scrollbar {
+  display: none;
 }

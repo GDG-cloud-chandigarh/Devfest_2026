@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Asterisk, ArrowRight, Globe, Waves } from "lucide-react";
 import { GlowButton } from "@/components/GlowButton";
+import { MarqueeTrack } from "@/components/MarqueeTrack";
 import { EVENTS_URL } from "@/lib/constants";
 
 /**
@@ -91,21 +92,15 @@ export function RecapsMarquee() {
         </span>
       </div>
 
-      {/*
-        Infinite scroll: the item list is rendered twice and the track slides by
-        exactly half its width, so the seam lands back at the starting frame.
-      */}
-      <div className="marquee mt-8 overflow-hidden">
-        <div className="marquee-track flex w-max gap-4">
-          {[0, 1].map((copy) => (
-            <div key={copy} className="flex shrink-0 gap-4" aria-hidden={copy === 1}>
-              {RECAP_ITEMS.map((item, i) => (
-                <RecapItem key={i} item={item} />
-              ))}
-            </div>
-          ))}
-        </div>
-      </div>
+      <MarqueeTrack>
+        {[0, 1].map((copy) => (
+          <div key={copy} data-copy className="flex shrink-0 gap-4" aria-hidden={copy === 1}>
+            {RECAP_ITEMS.map((item, i) => (
+              <RecapItem key={i} item={item} />
+            ))}
+          </div>
+        ))}
+      </MarqueeTrack>
 
       <div className="mx-auto mt-8 flex max-w-6xl justify-end px-4 sm:px-8">
         <GlowButton href={EVENTS_URL} size="sm">
