@@ -51,7 +51,7 @@ function VenueCard({ venue }: { venue: Venue }) {
 
 export function VenuesSection() {
   return (
-    <section className="bg-neutral-dark py-16 text-white">
+    <section className="flex min-h-dvh flex-col justify-center bg-neutral-dark py-16 text-white">
       <SectionHeader title="Venues" />
 
       <div className="mx-auto mt-10 grid max-w-6xl gap-6 px-4 sm:px-8 md:grid-cols-2">
