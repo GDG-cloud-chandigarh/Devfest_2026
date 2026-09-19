@@ -31,3 +31,23 @@ h6 {
 .marquee::-webkit-scrollbar {
   display: none;
 }
+
+/* Tilted text ticker (Ticker.tsx): two copies, slide by half. */
+@keyframes ticker-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.ticker-track {
+  animation: ticker-scroll 40s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track {
+    animation: none;
+  }
+}

@@ -6,7 +6,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowUp, Github, Instagram, Linkedin, Mail, Twitter, Youtube } from "lucide-react";
 import { DarkGrid } from "@/components/DarkGrid";
-import { Glyph } from "@/components/Glyph";
+import { Ticker } from "@/components/Ticker";
 import { CODE_OF_CONDUCT_URL, CONTACT_EMAIL, EVENTS_URL, SOCIAL_LINKS, TICKETS_URL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
@@ -48,17 +48,11 @@ const STYLES = `
   100% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
 }
 
-@keyframes footer-scroll-marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
 
 .animate-footer-breathe { animation: footer-breathe 8s ease-in-out infinite alternate; }
-.animate-footer-scroll-marquee { animation: footer-scroll-marquee 40s linear infinite; }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-footer-breathe,
-  .animate-footer-scroll-marquee { animation: none; }
+  .animate-footer-breathe { animation: none; }
 }
 
 
@@ -190,8 +184,6 @@ MagneticButton.displayName = "MagneticButton";
 // -------------------------------------------------------------------------
 // Content
 // -------------------------------------------------------------------------
-const TICKER = ["Workshops", "Conference", "Hackathon", "Private Network", "17 and 18 Oct 2026", "Chandigarh"];
-
 const SOCIALS = [
   { href: SOCIAL_LINKS.linkedin, label: "LinkedIn", Icon: Linkedin },
   { href: SOCIAL_LINKS.twitter, label: "X", Icon: Twitter },
@@ -201,18 +193,6 @@ const SOCIALS = [
   { href: `mailto:${CONTACT_EMAIL}`, label: "Email", Icon: Mail },
 ];
 
-function TickerRun() {
-  return (
-    <div className="flex items-center gap-10 px-5">
-      {TICKER.map((item) => (
-        <React.Fragment key={item}>
-          <span>{item}</span>
-          <Glyph name="asterisk" className="h-3 opacity-60 invert" />
-        </React.Fragment>
-      ))}
-    </div>
-  );
-}
 
 const PILL = "footer-glass-pill rounded-full flex items-center gap-3 text-white";
 
@@ -279,15 +259,7 @@ export function CinematicFooter() {
             DEVFEST
           </div>
 
-          {/* Ticker */}
-          <div className="absolute left-0 top-6 z-10 w-full -rotate-2 scale-110 overflow-hidden border-y border-white/10 bg-neutral-dark/60 py-2.5 shadow-2xl backdrop-blur-md">
-            <div className="animate-footer-scroll-marquee flex w-max text-xs font-bold uppercase tracking-[0.3em] text-white/60 md:text-sm">
-              <TickerRun />
-              <div aria-hidden="true">
-                <TickerRun />
-              </div>
-            </div>
-          </div>
+          <Ticker className="absolute left-0 top-6 z-10 bg-neutral-dark/60 backdrop-blur-md" />
 
           {/* Centre */}
           <div className="relative z-10 mx-auto mt-14 flex w-full max-w-5xl flex-1 flex-col items-center justify-center px-6">
