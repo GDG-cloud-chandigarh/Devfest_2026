@@ -1,5 +1,4 @@
 import { CornerHandles } from "@/components/CornerHandles";
-import { DarkGrid } from "@/components/DarkGrid";
 import { Glyph } from "@/components/Glyph";
 import { SectionHeader } from "@/components/SectionHeader";
 import { CONTACT_EMAIL } from "@/lib/constants";
@@ -59,8 +58,7 @@ const FAQS: { question: string; answer: React.ReactNode }[] = [
 
 export function Faqs() {
   return (
-    <section className="relative isolate py-16 text-white">
-      <DarkGrid />
+    <section className="py-16 text-white">
       <SectionHeader title="FAQs" />
 
       <div className="mx-auto w-full mt-10 max-w-4xl space-y-6 px-4 sm:px-8">

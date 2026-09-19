@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic";
+import { DarkGrid } from "@/components/DarkGrid";
 import { GlowButton } from "@/components/GlowButton";
 import { Faqs } from "@/components/Faqs";
 import { FocusAreas } from "@/components/FocusAreas";
@@ -6,6 +7,7 @@ import { FormatsGrid } from "@/components/FormatsGrid";
 import { RecapsMarquee } from "@/components/RecapsMarquee";
 import { VenuesSection } from "@/components/VenuesSection";
 import { DynamicTextSlider } from "@/components/ui/dynamic-text-slider";
+import { CinematicFooter } from "@/components/ui/motion-footer";
 import { SITE_TAGLINE, TICKETS_URL } from "@/lib/constants";
 
 const HeroTags = dynamic(() => import("@/components/HeroTags").then((mod) => mod.HeroTags), {
@@ -29,7 +31,17 @@ export default function HomePage() {
       <FormatsGrid />
       <VenuesSection />
       <FocusAreas />
-      <Faqs />
+
+      {/*
+        FAQ and footer share one grid. Giving each its own instance left the
+        lines offset by the FAQ's height and a dim band where the two edge
+        fades met.
+      */}
+      <div className="relative isolate">
+        <DarkGrid />
+        <Faqs />
+        <CinematicFooter />
+      </div>
     </>
   );
 }

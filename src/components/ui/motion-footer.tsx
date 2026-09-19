@@ -5,7 +5,6 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowUp, Github, Instagram, Linkedin, Mail, Twitter, Youtube } from "lucide-react";
-import { DarkGrid } from "@/components/DarkGrid";
 import { Ticker } from "@/components/Ticker";
 import { CODE_OF_CONDUCT_URL, CONTACT_EMAIL, EVENTS_URL, SOCIAL_LINKS, TICKETS_URL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
@@ -16,7 +15,7 @@ if (typeof window !== "undefined") {
 
 /*
   Footer-scoped styles. The glass and glow recipes below were written against
-  shadcn's --foreground / --background / --primary tokens, so those are set
+  shadcn's --foreground and --background tokens, so those are set
   here from the site palette rather than rewriting every color-mix() call.
 */
 const STYLES = `
@@ -26,8 +25,6 @@ const STYLES = `
 
   --foreground: #ffffff;
   --background: #1E1E1E;
-  --primary: #4285F4;
-  --secondary: #FBBC04;
 
   --pill-bg-1: color-mix(in oklch, var(--foreground) 3%, transparent);
   --pill-bg-2: color-mix(in oklch, var(--foreground) 1%, transparent);
@@ -41,28 +38,6 @@ const STYLES = `
   --pill-border-hover: color-mix(in oklch, var(--foreground) 20%, transparent);
   --pill-shadow-hover: color-mix(in oklch, var(--background) 70%, transparent);
   --pill-highlight-hover: color-mix(in oklch, var(--foreground) 20%, transparent);
-}
-
-@keyframes footer-breathe {
-  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
-  100% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
-}
-
-
-.animate-footer-breathe { animation: footer-breathe 8s ease-in-out infinite alternate; }
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-footer-breathe { animation: none; }
-}
-
-
-.footer-aurora {
-  background: radial-gradient(
-    circle at 50% 50%,
-    color-mix(in oklch, var(--primary) 15%, transparent) 0%,
-    color-mix(in oklch, var(--secondary) 15%, transparent) 40%,
-    transparent 70%
-  );
 }
 
 .footer-glass-pill {
@@ -193,17 +168,16 @@ const SOCIALS = [
   { href: `mailto:${CONTACT_EMAIL}`, label: "Email", Icon: Mail },
 ];
 
-
 const PILL = "footer-glass-pill rounded-full flex items-center gap-3 text-white";
 
 export function CinematicFooter() {
-  const wrapperRef = useRef<HTMLDivElement>(null);
+  const footerRef = useRef<HTMLElement>(null);
   const giantTextRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const linksRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!wrapperRef.current) return;
+    if (!footerRef.current) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const ctx = gsap.context(() => {
@@ -215,7 +189,7 @@ export function CinematicFooter() {
           scale: 1,
           opacity: 1,
           ease: "power1.out",
-          scrollTrigger: { trigger: wrapperRef.current, start: "top 95%", end: "bottom bottom", scrub: 1 },
+          scrollTrigger: { trigger: footerRef.current, start: "top 95%", end: "bottom bottom", scrub: 1 },
         }
       );
 
@@ -227,10 +201,10 @@ export function CinematicFooter() {
           opacity: 1,
           stagger: 0.15,
           ease: "power3.out",
-          scrollTrigger: { trigger: wrapperRef.current, start: "top 85%", end: "bottom bottom", scrub: 1 },
+          scrollTrigger: { trigger: footerRef.current, start: "top 85%", end: "bottom bottom", scrub: 1 },
         }
       );
-    }, wrapperRef);
+    }, footerRef);
 
     return () => ctx.revert();
   }, []);
@@ -241,88 +215,81 @@ export function CinematicFooter() {
     <>
       <style dangerouslySetInnerHTML={{ __html: STYLES }} />
 
-      {/*
-        Curtain reveal. The wrapper sits in normal flow and clips its subtree,
-        so the fixed footer beneath only paints inside the wrapper's box and
-        appears to slide out from under the page as the wrapper scrolls in.
-      */}
-      <div ref={wrapperRef} className="relative h-[50vh] w-full" style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)" }}>
-        <footer className="cinematic-footer-wrapper fixed bottom-0 left-0 flex h-[50vh] w-full flex-col justify-between overflow-hidden bg-neutral-dark text-white">
-          <div className="footer-aurora animate-footer-breathe pointer-events-none absolute left-1/2 top-1/2 z-0 h-[40vh] w-[80vw] -translate-x-1/2 -translate-y-1/2 rounded-[50%] blur-[80px]" />
-          <DarkGrid />
+      <footer
+        ref={footerRef}
+        className="cinematic-footer-wrapper relative flex min-h-[50vh] w-full flex-col justify-between overflow-hidden text-white"
+      >
 
-          <div
-            ref={giantTextRef}
-            className="footer-giant-bg-text pointer-events-none absolute -bottom-[2vh] left-1/2 z-0 -translate-x-1/2 select-none whitespace-nowrap"
-            aria-hidden="true"
+        <div
+          ref={giantTextRef}
+          className="footer-giant-bg-text pointer-events-none absolute -bottom-[2vh] left-1/2 z-0 -translate-x-1/2 select-none whitespace-nowrap"
+          aria-hidden="true"
+        >
+          DEVFEST
+        </div>
+
+        <Ticker className="absolute left-0 top-6 z-10 bg-neutral-dark/60 backdrop-blur-md" />
+
+        {/* Centre */}
+        <div className="relative z-10 mx-auto mt-14 flex w-full max-w-5xl flex-1 flex-col items-center justify-center px-6">
+          <h2
+            ref={headingRef}
+            className="footer-text-glow mb-6 text-center font-heading text-3xl font-black tracking-tighter md:text-5xl"
           >
-            DEVFEST
-          </div>
+            See you in Chandigarh.
+          </h2>
 
-          <Ticker className="absolute left-0 top-6 z-10 bg-neutral-dark/60 backdrop-blur-md" />
+          <div ref={linksRef} className="flex w-full flex-col items-center gap-3">
+            <div className="flex w-full flex-wrap justify-center gap-4">
+              <MagneticButton as="a" href={TICKETS_URL} className={cn(PILL, "px-7 py-3 text-sm font-bold")}>
+                Get Tickets
+              </MagneticButton>
+              <MagneticButton as="a" href={EVENTS_URL} className={cn(PILL, "px-7 py-3 text-sm font-bold")}>
+                View all events
+              </MagneticButton>
+            </div>
 
-          {/* Centre */}
-          <div className="relative z-10 mx-auto mt-14 flex w-full max-w-5xl flex-1 flex-col items-center justify-center px-6">
-            <h2
-              ref={headingRef}
-              className="footer-text-glow mb-6 text-center font-heading text-3xl font-black tracking-tighter md:text-5xl"
-            >
-              See you in Chandigarh.
-            </h2>
-
-            <div ref={linksRef} className="flex w-full flex-col items-center gap-3">
-              <div className="flex w-full flex-wrap justify-center gap-4">
-                <MagneticButton as="a" href={TICKETS_URL} className={cn(PILL, "px-7 py-3 text-sm font-bold")}>
-                  Get Tickets
-                </MagneticButton>
-                <MagneticButton as="a" href={EVENTS_URL} className={cn(PILL, "px-7 py-3 text-sm font-bold")}>
-                  View all events
-                </MagneticButton>
-              </div>
-
-              <div className="flex w-full flex-wrap justify-center gap-2 md:gap-3">
-                {SOCIALS.map(({ href, label, Icon }) => (
-                  <MagneticButton
-                    key={label}
-                    as="a"
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={label}
-                    className={cn(PILL, "h-10 w-10 justify-center text-white/60 hover:text-white")}
-                  >
-                    <Icon className="h-5 w-5" />
-                  </MagneticButton>
-                ))}
+            <div className="flex w-full flex-wrap justify-center gap-2 md:gap-3">
+              {SOCIALS.map(({ href, label, Icon }) => (
                 <MagneticButton
+                  key={label}
                   as="a"
-                  href={CODE_OF_CONDUCT_URL}
-                  className={cn(PILL, "px-5 py-2.5 text-xs font-medium text-white/60 hover:text-white")}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className={cn(PILL, "h-10 w-10 justify-center text-white/60 hover:text-white")}
                 >
-                  Code of Conduct
+                  <Icon className="h-5 w-5" />
                 </MagneticButton>
-              </div>
+              ))}
+              <MagneticButton
+                as="a"
+                href={CODE_OF_CONDUCT_URL}
+                className={cn(PILL, "px-5 py-2.5 text-xs font-medium text-white/60 hover:text-white")}
+              >
+                Code of Conduct
+              </MagneticButton>
             </div>
           </div>
+        </div>
 
-          {/* Bottom bar */}
-          <div className="relative z-20 flex w-full flex-col items-center justify-between gap-4 px-6 pb-5 md:flex-row md:px-12">
-            <p className="max-w-md text-center text-[10px] font-semibold uppercase tracking-widest text-white/50 md:text-left md:text-xs">
-              &copy; 2026 GDG Cloud Chandigarh.
-            </p>
+        {/* Bottom bar */}
+        <div className="relative z-20 flex w-full flex-col items-center justify-between gap-4 px-6 pb-5 md:flex-row md:px-12">
+          <p className="max-w-md text-center text-[10px] font-semibold uppercase tracking-widest text-white/50 md:text-left md:text-xs">
+            &copy; 2026 GDG Cloud Chandigarh.
+          </p>
 
-
-            <MagneticButton
-              as="button"
-              onClick={scrollToTop}
-              aria-label="Back to top"
-              className={cn(PILL, "group h-12 w-12 justify-center text-white/60 hover:text-white")}
-            >
-              <ArrowUp className="h-5 w-5 transition-transform duration-300 group-hover:-translate-y-1.5" />
-            </MagneticButton>
-          </div>
-        </footer>
-      </div>
+          <MagneticButton
+            as="button"
+            onClick={scrollToTop}
+            aria-label="Back to top"
+            className={cn(PILL, "group h-12 w-12 justify-center text-white/60 hover:text-white")}
+          >
+            <ArrowUp className="h-5 w-5 transition-transform duration-300 group-hover:-translate-y-1.5" />
+          </MagneticButton>
+        </div>
+      </footer>
     </>
   );
 }
