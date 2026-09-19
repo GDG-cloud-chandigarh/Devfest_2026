@@ -54,7 +54,7 @@ function RecapItem({ item }: { item: (typeof RECAP_ITEMS)[number] }) {
 export function RecapsMarquee() {
   return (
     <section className="flex min-h-dvh flex-col justify-center bg-neutral-dark py-12 text-white">
-      <SectionHeader title="Previous Events:" />
+      <SectionHeader title="Previous Events:" onDark />
 
       <MarqueeTrack>
         {[0, 1].map((copy) => (
