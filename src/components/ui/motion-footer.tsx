@@ -5,6 +5,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowUp, Github, Instagram, Linkedin, Mail, Twitter, Youtube } from "lucide-react";
+import { DarkGrid } from "@/components/DarkGrid";
 import { Glyph } from "@/components/Glyph";
 import { CODE_OF_CONDUCT_URL, CONTACT_EMAIL, EVENTS_URL, SOCIAL_LINKS, TICKETS_URL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
@@ -60,14 +61,6 @@ const STYLES = `
   .animate-footer-scroll-marquee { animation: none; }
 }
 
-.footer-bg-grid {
-  background-size: 60px 60px;
-  background-image:
-    linear-gradient(to right, color-mix(in oklch, var(--foreground) 3%, transparent) 1px, transparent 1px),
-    linear-gradient(to bottom, color-mix(in oklch, var(--foreground) 3%, transparent) 1px, transparent 1px);
-  mask-image: linear-gradient(to bottom, transparent, black 30%, black 70%, transparent);
-  -webkit-mask-image: linear-gradient(to bottom, transparent, black 30%, black 70%, transparent);
-}
 
 .footer-aurora {
   background: radial-gradient(
@@ -276,7 +269,7 @@ export function CinematicFooter() {
       <div ref={wrapperRef} className="relative h-[50vh] w-full" style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)" }}>
         <footer className="cinematic-footer-wrapper fixed bottom-0 left-0 flex h-[50vh] w-full flex-col justify-between overflow-hidden bg-neutral-dark text-white">
           <div className="footer-aurora animate-footer-breathe pointer-events-none absolute left-1/2 top-1/2 z-0 h-[40vh] w-[80vw] -translate-x-1/2 -translate-y-1/2 rounded-[50%] blur-[80px]" />
-          <div className="footer-bg-grid pointer-events-none absolute inset-0 z-0" />
+          <DarkGrid />
 
           <div
             ref={giantTextRef}

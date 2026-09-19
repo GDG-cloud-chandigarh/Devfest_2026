@@ -94,7 +94,7 @@ function FormatCard({ format }: { format: Format }) {
 
 export function FormatsGrid() {
   return (
-    <section className="flex min-h-dvh flex-col justify-center bg-cream py-16 text-neutral-dark">
+    <section className="flex min-h-dvh flex-col justify-center py-16 text-neutral-dark">
       <SectionHeader title="DevFest 2026" />
 
       <div className="mx-auto w-full mt-10 grid max-w-6xl grid-cols-1 gap-4 px-4 sm:px-8 md:auto-rows-[17rem] md:grid-cols-4">

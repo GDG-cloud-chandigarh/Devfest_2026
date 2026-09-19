@@ -46,7 +46,7 @@ function TrackCard({ track }: { track: Track }) {
 
 export function FocusAreas() {
   return (
-    <section className="flex min-h-dvh flex-col justify-center bg-cream py-16 text-neutral-dark">
+    <section className="flex min-h-dvh flex-col justify-center py-16 text-neutral-dark">
       <SectionHeader title="Focus Areas" />
 
       <div className="mx-auto w-full mt-10 grid max-w-6xl gap-4 px-4 sm:grid-cols-2 sm:px-8 lg:grid-cols-4">

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { CornerHandles } from "@/components/CornerHandles";
+import { DarkGrid } from "@/components/DarkGrid";
 import { GlowButton } from "@/components/GlowButton";
 import { MarqueeTrack } from "@/components/MarqueeTrack";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -53,7 +54,8 @@ function RecapItem({ item }: { item: (typeof RECAP_ITEMS)[number] }) {
 
 export function RecapsMarquee() {
   return (
-    <section className="flex min-h-dvh flex-col justify-center bg-neutral-dark py-12 text-white">
+    <section className="relative isolate flex min-h-dvh flex-col justify-center py-12 text-white">
+      <DarkGrid />
       <SectionHeader title="Previous Events:" />
 
       <MarqueeTrack>

@@ -1,4 +1,5 @@
 import { Calendar } from "lucide-react";
+import { DarkGrid } from "@/components/DarkGrid";
 import { GlowButton } from "@/components/GlowButton";
 import { SectionHeader } from "@/components/SectionHeader";
 import { TICKETS_URL } from "@/lib/constants";
@@ -51,7 +52,8 @@ function VenueCard({ venue }: { venue: Venue }) {
 
 export function VenuesSection() {
   return (
-    <section className="flex min-h-dvh flex-col justify-center bg-neutral-dark py-16 text-white">
+    <section className="relative isolate flex min-h-dvh flex-col justify-center py-16 text-white">
+      <DarkGrid />
       <SectionHeader title="Venues" />
 
       <div className="mx-auto w-full mt-10 grid max-w-6xl gap-6 px-4 sm:px-8 md:grid-cols-2">
