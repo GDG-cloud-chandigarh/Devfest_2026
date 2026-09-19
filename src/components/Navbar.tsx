@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { Lockup } from "./Lockup";
 import { NavHeader } from "./ui/nav-header";
@@ -30,6 +31,15 @@ export function Navbar() {
         <nav className="hidden items-center md:flex" aria-label="Primary">
           <NavHeader items={NAV_LINKS} className="border-2 border-neutral-dark bg-white/90 shadow-sm backdrop-blur" />
         </nav>
+
+        {/* Chapter lockup, moved here so it appears once rather than in every section. */}
+        <Image
+          src="/images/gdgcchd_black.png"
+          alt="Google Developer Groups Cloud Chandigarh"
+          width={1863}
+          height={312}
+          className="absolute right-4 hidden h-8 w-auto md:block"
+        />
 
         <button
           type="button"
