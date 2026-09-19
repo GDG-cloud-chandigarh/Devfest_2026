@@ -61,7 +61,7 @@ export function Faqs() {
     <section className="bg-neutral-dark py-16 text-white">
       <SectionHeader title="FAQs" />
 
-      <div className="mx-auto mt-10 max-w-4xl space-y-6 px-4 sm:px-8">
+      <div className="mx-auto w-full mt-10 max-w-4xl space-y-6 px-4 sm:px-8">
         {FAQS.map((faq) => (
           /*
             Native disclosure rather than a JS accordion: keyboard handling,

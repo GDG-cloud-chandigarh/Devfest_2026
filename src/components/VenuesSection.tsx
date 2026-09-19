@@ -54,7 +54,7 @@ export function VenuesSection() {
     <section className="flex min-h-dvh flex-col justify-center bg-neutral-dark py-16 text-white">
       <SectionHeader title="Venues" />
 
-      <div className="mx-auto mt-10 grid max-w-6xl gap-6 px-4 sm:px-8 md:grid-cols-2">
+      <div className="mx-auto w-full mt-10 grid max-w-6xl gap-6 px-4 sm:px-8 md:grid-cols-2">
         {VENUES.map((venue) => (
           <VenueCard key={venue.name} venue={venue} />
         ))}

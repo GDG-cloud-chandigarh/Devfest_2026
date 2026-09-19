@@ -66,7 +66,7 @@ export function RecapsMarquee() {
         ))}
       </MarqueeTrack>
 
-      <div className="mx-auto mt-8 flex max-w-6xl justify-end px-4 sm:px-8">
+      <div className="mx-auto w-full mt-8 flex max-w-6xl justify-end px-4 sm:px-8">
         <GlowButton href={EVENTS_URL} size="sm">
           View all events
         </GlowButton>

@@ -3,7 +3,7 @@ import { Glyph } from "@/components/Glyph";
 /** Section title and the decorative glyph pill. */
 export function SectionHeader({ title }: { title: string }) {
   return (
-    <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-6 gap-y-4 px-4 sm:px-8">
+    <div className="mx-auto w-full flex max-w-6xl flex-wrap items-center gap-x-6 gap-y-4 px-4 sm:px-8">
       <h2 className="font-heading text-2xl font-bold sm:text-3xl">{title}</h2>
 
       <span
