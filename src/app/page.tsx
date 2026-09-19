@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 import { GlowButton } from "@/components/GlowButton";
+import { Faqs } from "@/components/Faqs";
 import { FocusAreas } from "@/components/FocusAreas";
 import { FormatsGrid } from "@/components/FormatsGrid";
 import { RecapsMarquee } from "@/components/RecapsMarquee";
@@ -28,6 +29,7 @@ export default function HomePage() {
       <FormatsGrid />
       <VenuesSection />
       <FocusAreas />
+      <Faqs />
     </>
   );
 }
