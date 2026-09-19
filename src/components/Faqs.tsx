@@ -12,7 +12,7 @@ const FAQS: { question: string; answer: React.ReactNode }[] = [
   {
     question: "When and where is it?",
     answer:
-      "Workshops run 30th to 31st October 2026 at Innovation Hub Chandigarh, and the conference day is 1st November 2026 at Diamond Arena.",
+      "17th October 2026 at Innovation Hub Chandigarh for workshops, and 18th October 2026 at Diamond Arena for the conference.",
   },
   {
     question: "How do I get a ticket?",

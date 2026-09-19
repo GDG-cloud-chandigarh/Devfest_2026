@@ -13,12 +13,12 @@ type Venue = {
 const VENUES: Venue[] = [
   {
     name: "Innovation Hub Chandigarh",
-    dates: "30th - 31st Oct 2026",
+    dates: "17th Oct 2026",
     pill: "border-google-blue bg-google-blue/20",
   },
   {
     name: "Diamond Arena",
-    dates: "1st Nov 2026",
+    dates: "18th Oct 2026",
     pill: "border-google-yellow bg-google-yellow/25",
   },
 ];
