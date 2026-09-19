@@ -14,3 +14,4 @@ export const SOCIAL_LINKS = {
 };
 
 export const CONTACT_EMAIL = "gdgcloudchandigarh@gmail.com";
+export const CODE_OF_CONDUCT_URL = "https://developers.google.com/community-guidelines";
