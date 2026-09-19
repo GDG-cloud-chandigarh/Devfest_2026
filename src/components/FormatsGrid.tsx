@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Asterisk, Globe, Waves } from "lucide-react";
+import { Glyph } from "@/components/Glyph";
 import { CornerHandles } from "@/components/CornerHandles";
 import { SectionHeader } from "@/components/SectionHeader";
 import { GlowButton } from "@/components/GlowButton";
@@ -53,10 +53,10 @@ function CardGlyphs() {
   return (
     <span aria-hidden="true" className="flex items-center gap-3 text-neutral-dark/50">
       <Image src="/images/gdg_logo.png" alt="" width={48} height={48} className="h-5 w-auto" />
-      <Asterisk className="h-4 w-4" />
-      <Globe className="h-4 w-4" />
-      <Waves className="h-4 w-4" />
-      <Asterisk className="h-4 w-4 max-sm:hidden" />
+      <Glyph name="asterisk" className="h-4" />
+      <Glyph name="globe" className="h-5" />
+      <Glyph name="wave" className="h-2.5" />
+      <Glyph name="asterisk" className="h-4 max-sm:hidden" />
     </span>
   );
 }

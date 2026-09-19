@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Asterisk, ArrowRight, Globe, Waves } from "lucide-react";
+import { Glyph } from "@/components/Glyph";
 
 /**
  * Section title, chapter lockup and the decorative glyph pill.
@@ -24,11 +24,11 @@ export function SectionHeader({ title, onDark = false }: { title: string; onDark
         aria-hidden="true"
         className="ml-auto hidden items-center gap-6 rounded-full border border-neutral-dark/10 bg-neutral-light px-8 py-3 text-neutral-dark lg:flex"
       >
-        <Asterisk className="h-5 w-5" />
-        <ArrowRight className="h-5 w-5" />
-        <Globe className="h-5 w-5" />
-        <Waves className="h-5 w-5" />
-        <Asterisk className="h-5 w-5" />
+        <Glyph name="asterisk" className="h-5" />
+        <Glyph name="arrow" className="h-5" />
+        <Glyph name="globe" className="h-6" />
+        <Glyph name="wave" className="h-3" />
+        <Glyph name="asterisk" className="h-5" />
       </span>
     </div>
   );
