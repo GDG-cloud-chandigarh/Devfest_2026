@@ -46,6 +46,10 @@ h6 {
   animation: ticker-scroll 40s linear infinite;
 }
 
+.ticker-track-reverse {
+  animation-direction: reverse;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .ticker-track {
     animation: none;

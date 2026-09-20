@@ -4,9 +4,8 @@ import { DarkGrid } from "@/components/DarkGrid";
 import { GlowButton } from "@/components/GlowButton";
 import { MarqueeTrack } from "@/components/MarqueeTrack";
 import { SectionHeader } from "@/components/SectionHeader";
-import { SEAM, SeamTicker } from "@/components/Ticker";
+import { seamClip, SeamTicker } from "@/components/Ticker";
 import { EVENTS_URL } from "@/lib/constants";
-import { cn } from "@/lib/utils";
 
 /**
  * Items scrolled by the marquee. Colour blocks sit between the photos so the
@@ -56,7 +55,10 @@ function RecapItem({ item }: { item: (typeof RECAP_ITEMS)[number] }) {
 
 export function RecapsMarquee() {
   return (
-    <section className={cn("relative isolate flex min-h-dvh flex-col justify-center py-12 text-white", SEAM)}>
+    <section
+      className="relative isolate flex min-h-dvh flex-col justify-center overflow-hidden py-12 pb-28 text-white"
+      style={seamClip("none", "normal")}
+    >
       <DarkGrid />
       <SectionHeader title="Previous Events:" />
 

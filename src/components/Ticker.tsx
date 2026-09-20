@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { CSSProperties, Fragment } from "react";
 import { Glyph } from "@/components/Glyph";
 import { cn } from "@/lib/utils";
 
@@ -22,15 +22,21 @@ function Run() {
  * half its width, so the loop is seamless. Callers position it; on its own it
  * is a full-width in-flow strip.
  */
-export function Ticker({ className }: { className?: string }) {
+export function Ticker({ className, reverse = false }: { className?: string; reverse?: boolean }) {
   return (
     <div
       className={cn(
-        "w-full -rotate-2 scale-110 overflow-hidden border-y border-white/10 bg-neutral-dark py-2.5 shadow-2xl",
+        "w-full scale-110 overflow-hidden border-y border-white/10 bg-neutral-dark py-2.5 shadow-2xl",
+        reverse ? "rotate-2" : "-rotate-2",
         className
       )}
     >
-      <div className="ticker-track flex w-max text-xs font-bold uppercase tracking-[0.3em] text-white/60 md:text-sm">
+      <div
+        className={cn(
+          "ticker-track flex w-max text-xs font-bold uppercase tracking-[0.3em] text-white/60 md:text-sm",
+          reverse && "ticker-track-reverse"
+        )}
+      >
         <Run />
         <div aria-hidden="true">
           <Run />
@@ -41,17 +47,31 @@ export function Ticker({ className }: { className?: string }) {
 }
 
 /**
- * Seam between a dark section and the light one after it.
+ * Seams between a dark section and its light neighbours.
  *
- * Apply SEAM to the dark section and render <SeamTicker /> as its last child.
- * The section's bottom edge is cut at the strip's angle (3.5vw over the full
- * width is about 2 degrees), so the boundary runs parallel to the ticker and
- * hides beneath it. Keeping the strip inside the section means it sits on
- * that section's own grid, with no second grid instance to misalign at the
- * join. The cut-away corner reveals the page grid for the light section.
+ * A seamed section gets `overflow-hidden`, `pt-28` and/or `pb-28` for the
+ * strip to sit in, `style={seamClip(top, bottom)}` to cut the matching edges,
+ * and a <SeamTicker /> per edge as its last children. Each edge is cut at the
+ * strip's angle (3.5vw over the full width is about 2 degrees), so the
+ * boundary runs parallel to the ticker and hides beneath it. Keeping the strip
+ * inside the section means it sits on that section's own grid, with no second
+ * grid instance to misalign at the join. The cut-away corner reveals the page
+ * grid for the light section.
+ *
+ * "normal" tilts like <Ticker />, "reverse" like <Ticker reverse />.
  */
-export const SEAM = "overflow-hidden pb-28 [clip-path:polygon(0_0,100%_0,100%_calc(100%-3.5vw),0_100%)]";
+type Tilt = "none" | "normal" | "reverse";
 
-export function SeamTicker() {
-  return <Ticker className="absolute bottom-8 left-0" />;
+const DROP = "3.5vw";
+
+export function seamClip(top: Tilt, bottom: Tilt): CSSProperties {
+  const tl = top === "normal" ? DROP : "0";
+  const tr = top === "reverse" ? DROP : "0";
+  const bl = bottom === "reverse" ? `calc(100% - ${DROP})` : "100%";
+  const br = bottom === "normal" ? `calc(100% - ${DROP})` : "100%";
+  return { clipPath: `polygon(0 ${tl}, 100% ${tr}, 100% ${br}, 0 ${bl})` };
+}
+
+export function SeamTicker({ reverse = false, edge = "bottom" }: { reverse?: boolean; edge?: "top" | "bottom" }) {
+  return <Ticker reverse={reverse} className={cn("absolute left-0", edge === "top" ? "top-8" : "bottom-8")} />;
 }
