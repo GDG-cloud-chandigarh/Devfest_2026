@@ -93,7 +93,7 @@ export function MarqueeTrack({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <div ref={viewport} className="marquee mt-8 overflow-x-auto overscroll-x-contain">
+    <div ref={viewport} className="marquee mt-8 overflow-x-auto overscroll-x-contain py-2">
       <div className="flex w-max gap-4">{children}</div>
     </div>
   );
