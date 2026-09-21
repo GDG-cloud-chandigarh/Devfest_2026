@@ -58,7 +58,7 @@ const FAQS: { question: string; answer: React.ReactNode }[] = [
 
 export function Faqs() {
   return (
-    <section className="py-16 text-white">
+    <section className="py-16">
       <SectionHeader title="FAQs" />
 
       <div className="mx-auto w-full mt-10 max-w-4xl space-y-6 px-4 sm:px-8">

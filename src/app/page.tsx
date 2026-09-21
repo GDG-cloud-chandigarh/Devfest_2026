@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
-import { DarkGrid } from "@/components/DarkGrid";
+import { Countdown } from "@/components/Countdown";
+import { DarkBand } from "@/components/DarkBand";
 import { GlowButton } from "@/components/GlowButton";
 import { Faqs } from "@/components/Faqs";
 import { FocusAreas } from "@/components/FocusAreas";
@@ -27,21 +28,25 @@ export default function HomePage() {
         </div>
       </section>
 
-      <RecapsMarquee />
+      <DarkBand bottom="normal">
+        <div className="flex min-h-dvh flex-col justify-center">
+          <Countdown />
+          <RecapsMarquee />
+        </div>
+      </DarkBand>
+
       <FormatsGrid />
-      <VenuesSection />
+
+      <DarkBand top="reverse" bottom="reverse">
+        <VenuesSection />
+      </DarkBand>
+
       <FocusAreas />
 
-      {/*
-        FAQ and footer share one grid. Giving each its own instance left the
-        lines offset by the FAQ's height and a dim band where the two edge
-        fades met.
-      */}
-      <div className="relative isolate">
-        <DarkGrid />
+      <DarkBand>
         <Faqs />
         <CinematicFooter />
-      </div>
+      </DarkBand>
     </>
   );
 }

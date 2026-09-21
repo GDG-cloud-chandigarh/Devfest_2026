@@ -2,7 +2,7 @@ import { CSSProperties, Fragment } from "react";
 import { Glyph } from "@/components/Glyph";
 import { cn } from "@/lib/utils";
 
-const ITEMS = ["Workshops", "Conference", "Hackathon", "Private Network", "17 and 18 Oct 2026", "Chandigarh"];
+const ITEMS = ["Workshops", "Conference", "Hackathon", "Private Network", "18 Oct 2026", "Chandigarh"];
 
 function Run() {
   return (
@@ -47,20 +47,15 @@ export function Ticker({ className, reverse = false }: { className?: string; rev
 }
 
 /**
- * Seams between a dark section and its light neighbours.
+ * Seams between a dark band and its light neighbours; DarkBand wires these up.
  *
- * A seamed section gets `overflow-hidden`, `pt-28` and/or `pb-28` for the
- * strip to sit in, `style={seamClip(top, bottom)}` to cut the matching edges,
- * and a <SeamTicker /> per edge as its last children. Each edge is cut at the
- * strip's angle (3.5vw over the full width is about 2 degrees), so the
- * boundary runs parallel to the ticker and hides beneath it. Keeping the strip
- * inside the section means it sits on that section's own grid, with no second
- * grid instance to misalign at the join. The cut-away corner reveals the page
- * grid for the light section.
+ * Each cut edge runs at the strip's angle (3.5vw over the full width is about
+ * 2 degrees), so the boundary is parallel to the ticker and hides beneath it.
+ * The cut-away corner reveals the page grid for the light section.
  *
  * "normal" tilts like <Ticker />, "reverse" like <Ticker reverse />.
  */
-type Tilt = "none" | "normal" | "reverse";
+export type Tilt = "none" | "normal" | "reverse";
 
 const DROP = "3.5vw";
 

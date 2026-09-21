@@ -1,10 +1,8 @@
 import Image from "next/image";
 import { CornerHandles } from "@/components/CornerHandles";
-import { DarkGrid } from "@/components/DarkGrid";
 import { GlowButton } from "@/components/GlowButton";
 import { MarqueeTrack } from "@/components/MarqueeTrack";
 import { SectionHeader } from "@/components/SectionHeader";
-import { seamClip, SeamTicker } from "@/components/Ticker";
 import { EVENTS_URL } from "@/lib/constants";
 
 /**
@@ -25,7 +23,7 @@ const RECAP_ITEMS: ({ photo: string; alt: string } | { color: string; stat: stri
 
 // Height is driven off the viewport so the band fills the screen; the 3:4 ratio
 // then sets the width, which keeps every item portrait at any size.
-const ITEM_SIZE = "h-[46vh] aspect-[3/4] shrink-0 sm:h-[54vh] lg:h-[60vh]";
+const ITEM_SIZE = "h-[32vh] aspect-[3/4] shrink-0 sm:h-[36vh] lg:h-[38vh]";
 
 function RecapItem({ item }: { item: (typeof RECAP_ITEMS)[number] }) {
   return (
@@ -55,11 +53,7 @@ function RecapItem({ item }: { item: (typeof RECAP_ITEMS)[number] }) {
 
 export function RecapsMarquee() {
   return (
-    <section
-      className="relative isolate flex min-h-dvh flex-col justify-center overflow-hidden py-12 pb-28 text-white"
-      style={seamClip("none", "normal")}
-    >
-      <DarkGrid />
+    <section className="py-6">
       <SectionHeader title="Previous Events:" />
 
       <MarqueeTrack>
@@ -77,8 +71,6 @@ export function RecapsMarquee() {
           View all events
         </GlowButton>
       </div>
-
-      <SeamTicker />
     </section>
   );
 }

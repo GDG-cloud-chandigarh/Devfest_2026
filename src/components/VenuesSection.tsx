@@ -1,8 +1,6 @@
 import { Calendar } from "lucide-react";
-import { DarkGrid } from "@/components/DarkGrid";
 import { GlowButton } from "@/components/GlowButton";
 import { SectionHeader } from "@/components/SectionHeader";
-import { seamClip, SeamTicker } from "@/components/Ticker";
 import { TICKETS_URL } from "@/lib/constants";
 
 type Venue = {
@@ -53,11 +51,7 @@ function VenueCard({ venue }: { venue: Venue }) {
 
 export function VenuesSection() {
   return (
-    <section
-      className="relative isolate flex min-h-dvh flex-col justify-center overflow-hidden py-28 text-white"
-      style={seamClip("reverse", "reverse")}
-    >
-      <DarkGrid />
+    <section className="flex min-h-dvh flex-col justify-center py-16">
       <SectionHeader title="Venues" />
 
       <div className="mx-auto w-full mt-10 grid max-w-6xl gap-6 px-4 sm:px-8 md:grid-cols-2">
@@ -78,9 +72,6 @@ export function VenuesSection() {
           </GlowButton>
         ))}
       </div>
-
-      <SeamTicker reverse edge="top" />
-      <SeamTicker reverse />
     </section>
   );
 }
