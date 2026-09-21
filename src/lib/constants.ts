@@ -1,6 +1,5 @@
 export const SITE_NAME = "DevFest Chandigarh 2026";
-export const SITE_TAGLINE =
-  "Join us at DevFest Chandigarh 2026 on October 17th and 18th. Chandigarh's largest tech celebration of the year!";
+export const SITE_TAGLINE = "Chandigarh's largest tech celebration returns on October 18th, 2026.";
 
 export const TICKETS_URL = "https://gdg.community.dev/gdg-cloud-chandigarh/";
 export const EVENTS_URL = "https://gdg.community.dev/gdg-cloud-chandigarh/#past-events";
