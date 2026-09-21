@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { headingFont, bodyFont, monoFont } from "@/lib/fonts";
 import { Navbar } from "@/components/Navbar";
 import { SiteBackground } from "@/components/SiteBackground";
+import { SpeakerCallBar } from "@/components/SpeakerCallBar";
 import { SITE_NAME, SITE_TAGLINE } from "@/lib/constants";
 import "./globals.css";
 
@@ -15,6 +16,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${headingFont.variable} ${bodyFont.variable} ${monoFont.variable}`}>
       <body className="flex min-h-dvh flex-col">
         <SiteBackground />
+        <SpeakerCallBar />
         <Navbar />
         <main className="flex-1">{children}</main>
       </body>

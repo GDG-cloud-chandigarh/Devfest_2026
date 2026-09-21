@@ -16,4 +16,5 @@ export const SOCIAL_LINKS = {
 };
 
 export const CONTACT_EMAIL = "gdgcloudchandigarh@gmail.com";
+export const SPEAKER_CFP_URL = "https://sessionize.com/gdg-cloud-chandigarh-devfest";
 export const CODE_OF_CONDUCT_URL = "https://developers.google.com/community-guidelines";

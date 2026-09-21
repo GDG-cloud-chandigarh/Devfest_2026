@@ -1,7 +1,7 @@
 import { CornerHandles } from "@/components/CornerHandles";
 import { Glyph } from "@/components/Glyph";
 import { SectionHeader } from "@/components/SectionHeader";
-import { CONTACT_EMAIL } from "@/lib/constants";
+import { CONTACT_EMAIL, SPEAKER_CFP_URL } from "@/lib/constants";
 
 const FAQS: { question: string; answer: React.ReactNode }[] = [
   {
@@ -33,11 +33,16 @@ const FAQS: { question: string; answer: React.ReactNode }[] = [
     question: "I want to speak. How do I apply?",
     answer: (
       <>
-        Write to us at{" "}
-        <a href={`mailto:${CONTACT_EMAIL}`} className="font-semibold underline underline-offset-2">
-          {CONTACT_EMAIL}
-        </a>{" "}
-        with your topic and a short outline. First-time speakers are welcome, and we will help you shape the talk.
+        Submit your session through the{" "}
+        <a
+          href={SPEAKER_CFP_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-semibold underline underline-offset-2"
+        >
+          Call for Speakers form
+        </a>
+        . First-time speakers are welcome, and we will help you shape the talk.
       </>
     ),
   },
