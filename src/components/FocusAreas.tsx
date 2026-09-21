@@ -11,17 +11,37 @@ type Track = {
 const TRACKS: Track[] = [
   {
     title: "AI & ML",
-    blurb: "Gemini, agents and applied machine learning, from a weekend prototype to something that survives production.",
+    blurb: "Applied machine learning on Google's stack, from a weekend prototype to something that survives production.",
     pill: "bg-google-blue",
   },
   {
-    title: "Cloud",
+    title: "Gemini & Agents",
+    blurb: "Building with Gemini: tool use, agents that act on your behalf, and the guardrails that keep them useful.",
+    pill: "bg-google-red",
+  },
+  {
+    title: "Google Cloud",
     blurb: "Architecture, data and platform work on Google Cloud, told through what actually ran and what had to be rebuilt.",
     pill: "bg-google-green",
   },
   {
-    title: "Web & Mobile",
-    blurb: "Modern web and Android, Firebase Studio, and the craft of shipping something people keep on their home screen.",
+    title: "Firebase",
+    blurb: "Firebase Studio, auth, data and hosting: the shortest path from an idea to an app with real users.",
+    pill: "bg-google-yellow",
+  },
+  {
+    title: "Android",
+    blurb: "Modern Android with Kotlin and Compose, and the craft of an app people keep on their home screen.",
+    pill: "bg-google-green",
+  },
+  {
+    title: "Web",
+    blurb: "The modern web platform, performance budgets, and the frameworks the community actually ships with.",
+    pill: "bg-google-blue",
+  },
+  {
+    title: "Flutter",
+    blurb: "One codebase across mobile, web and desktop, and an honest look at where that trade-off earns its place.",
     pill: "bg-google-yellow",
   },
   {
@@ -48,6 +68,9 @@ export function FocusAreas() {
   return (
     <section className="flex min-h-dvh flex-col justify-center py-16 text-neutral-dark">
       <SectionHeader title="Focus Areas" />
+      <p className="mx-auto mt-4 w-full max-w-6xl px-4 text-neutral-dark/70 sm:px-8">
+        Eight tracks across the Google stack. Pick a lane for the day, or wander between them.
+      </p>
 
       <div className="mx-auto w-full mt-10 grid max-w-6xl gap-4 px-4 sm:grid-cols-2 sm:px-8 lg:grid-cols-4">
         {TRACKS.map((track) => (

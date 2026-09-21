@@ -22,7 +22,7 @@ const FAQS: { question: string; answer: React.ReactNode }[] = [
   {
     question: "What will the sessions cover?",
     answer:
-      "Four focus areas: AI & ML, Cloud, Web & Mobile, and Security & DevOps. Expect Gemini and agents, Google Cloud architecture, Firebase Studio and Android, and the pipeline and security work behind all of it.",
+      "Eight tracks across the Google stack: AI & ML, Gemini & Agents, Google Cloud, Firebase, Android, Web, Flutter, and Security & DevOps.",
   },
   {
     question: "What formats are there?",
