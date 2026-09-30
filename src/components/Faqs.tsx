@@ -12,12 +12,12 @@ const FAQS: { question: string; answer: React.ReactNode }[] = [
   {
     question: "When and where is it?",
     answer:
-      "17th October 2026 at Innovation Hub Chandigarh for workshops, and 18th October 2026 at Diamond Arena for the conference.",
+      "Cloud Community Day is 23rd October 2026 and DevFest is 24th October 2026, both in Chandigarh.",
   },
   {
     question: "How do I get a ticket?",
     answer:
-      "Pick Day 1, Day 2 or the Both Day ticket from the Venues section above. Each one covers everything running on the days it names.",
+      "Tickets are sold through AllEvents: Cloud Community Day on the 23rd at ₹299, DevFest on the 24th at ₹349, or a Season Pass covering both at ₹549. Any Get Tickets button goes straight there.",
   },
   {
     question: "What will the sessions cover?",

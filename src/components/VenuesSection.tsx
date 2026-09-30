@@ -13,17 +13,21 @@ type Venue = {
 const VENUES: Venue[] = [
   {
     name: "Innovation Hub Chandigarh",
-    dates: "17th Oct 2026",
+    dates: "23rd Oct 2026",
     pill: "border-google-blue bg-google-blue/20",
   },
   {
     name: "Diamond Arena",
-    dates: "18th Oct 2026",
+    dates: "24th Oct 2026",
     pill: "border-google-yellow bg-google-yellow/25",
   },
 ];
 
-const TICKETS = ["Day 1 Ticket", "Day 2 Ticket", "Both Day Ticket"];
+const TICKETS = [
+  "Cloud Community Day, 23 Oct (₹299)",
+  "DevFest, 24 Oct (₹349)",
+  "Season Pass, both days (₹549)",
+];
 
 function VenueCard({ venue }: { venue: Venue }) {
   return (

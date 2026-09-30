@@ -2,7 +2,7 @@ import { CSSProperties, Fragment } from "react";
 import { Glyph } from "@/components/Glyph";
 import { cn } from "@/lib/utils";
 
-const ITEMS = ["Workshops", "Conference", "Hackathon", "Private Network", "18 Oct 2026", "Chandigarh"];
+const ITEMS = ["Workshops", "Conference", "Hackathon", "Private Network", "24 Oct 2026", "Chandigarh"];
 
 function Run() {
   return (
