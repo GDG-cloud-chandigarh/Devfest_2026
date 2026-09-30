@@ -50,19 +50,22 @@ function EventCard({ event }: { event: Event }) {
       ) : (
         /*
           Outline-only lettering: a transparent fill over a hairline stroke.
-          The name runs wide and clips at the card edge, as in the design.
+          Pure decoration, so it is drawn by a pseudo-element rather than being
+          text: at 18% it is too faint to read the name from, and as a text node
+          it would be indexed and contrast-checked like content. The real
+          heading is in the overlay below.
         */
-        <h3
-          className="p-6 font-heading text-5xl font-bold uppercase leading-[0.95] tracking-tight text-transparent sm:text-6xl"
-          style={{ WebkitTextStroke: "2px rgba(30,30,30,0.18)" }}
-        >
-          {event.name}
-        </h3>
+        <div
+          aria-hidden="true"
+          data-label={event.name}
+          className="p-6 font-heading text-5xl font-bold uppercase leading-[0.95] tracking-tight sm:text-6xl before:text-transparent before:content-[attr(data-label)] before:[-webkit-text-stroke:2px_rgba(30,30,30,0.18)]"
+        />
       )}
 
       {/* Overlaid on the art, so the scrim keeps it readable whatever the poster does there. */}
       <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-cream via-cream/90 to-transparent p-6 pt-16">
-        <p className="text-sm text-neutral-dark/70">{event.blurb}</p>
+        <h3 className="font-heading text-xl font-bold">{event.name}</h3>
+        <p className="mt-1 text-sm text-neutral-dark/75">{event.blurb}</p>
 
         <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
           <p className={`flex w-fit items-center gap-2 rounded-full border-2 px-4 py-2 text-sm font-semibold ${event.pill}`}>

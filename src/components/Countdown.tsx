@@ -55,7 +55,7 @@ export function Countdown({ compact = false }: { compact?: boolean } = {}) {
               >
                 {parts ? String(parts[i].value).padStart(2, "0") : "--"}
               </span>
-              <span className="mt-1 block text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-neutral-dark/60">
+              <span className="mt-1 block text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-neutral-dark/75">
                 {label}
               </span>
             </div>
