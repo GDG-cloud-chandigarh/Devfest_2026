@@ -10,6 +10,8 @@ const STROKE = "#1E1E1E"; // matches the card border
 type Format = {
   title: string;
   photo: string;
+  /** Which past event the photo is from. */
+  alt: string;
   /** Colour wash over the photo. */
   tint: string;
   /** Label fill. */
@@ -22,6 +24,7 @@ const FORMATS: Format[] = [
   {
     title: "Workshops",
     photo: "/images/build_with_ai_2024.webp",
+    alt: "Build with AI 2024 at GDG Cloud Chandigarh",
     tint: "bg-google-red/55",
     text: "text-google-red",
     span: "md:col-span-2 md:row-span-2",
@@ -29,6 +32,7 @@ const FORMATS: Format[] = [
   {
     title: "Conference",
     photo: "/images/ccd_2025.jpg",
+    alt: "Cloud Community Days 2025 in Chandigarh",
     tint: "bg-google-yellow/60",
     text: "text-google-yellow",
     span: "md:col-span-2",
@@ -36,6 +40,7 @@ const FORMATS: Format[] = [
   {
     title: "Hackathon",
     photo: "/images/devfest_2025.webp",
+    alt: "DevFest Chandigarh 2025",
     tint: "bg-google-green/55",
     text: "text-google-green",
     span: "md:col-span-1",
@@ -43,6 +48,7 @@ const FORMATS: Format[] = [
   {
     title: "Private Network",
     photo: "/images/ccd_2024.jpg",
+    alt: "Cloud Community Days 2024 in Chandigarh",
     tint: "bg-google-blue/55",
     text: "text-google-blue",
     span: "md:col-span-1",
@@ -67,7 +73,7 @@ function FormatCard({ format }: { format: Format }) {
       <div className="relative h-full w-full overflow-hidden border-2 border-neutral-dark">
         <Image
           src={format.photo}
-          alt=""
+          alt={format.alt}
           fill
           sizes="(min-width: 768px) 50vw, 100vw"
           className="object-cover"
