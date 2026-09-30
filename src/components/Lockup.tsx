@@ -1,6 +1,6 @@
 /**
  * `{ DevFest }` wordmark with the Chandigarh chapter pill.
- * Drawn in CSS — swap for an <Image> once the licensed brand asset lands.
+ * Drawn in CSS; swap for an <Image> once the licensed brand asset lands.
  */
 export function Lockup({ className }: { className?: string }) {
   return (

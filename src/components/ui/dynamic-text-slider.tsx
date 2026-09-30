@@ -28,7 +28,7 @@ interface DragState {
 export interface DynamicTextSliderProps {
   /** Static first line of the headline. */
   topLine?: string;
-  /** Second line — the word the slider reveals/clips. */
+  /** Second line: the word the slider reveals or clips. */
   sliderWord?: string;
   /** Optional supporting copy under the headline. */
   subheading?: string;
