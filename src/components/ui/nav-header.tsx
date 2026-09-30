@@ -2,7 +2,6 @@
 
 import { useRef, useState, type ReactNode } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 interface NavHeaderItem {
@@ -85,12 +84,17 @@ function Tab({ href, children, isActive, onHover }: TabProps) {
   );
 }
 
+/*
+  The sliding pill. A CSS transition rather than a spring from framer-motion,
+  which was the last thing on the page using that library; the easing curve
+  overshoots slightly to keep the spring's small bounce.
+*/
 function Cursor({ position }: { position: CursorPosition }) {
   return (
-    <motion.li
-      animate={position}
-      transition={{ type: "spring", stiffness: 350, damping: 30 }}
-      className="absolute inset-y-1 z-0 rounded-full bg-neutral-dark"
+    <li
+      aria-hidden="true"
+      className="absolute inset-y-1 z-0 rounded-full bg-neutral-dark transition-[left,width,opacity] duration-300 ease-[cubic-bezier(0.22,1.12,0.36,1)] motion-reduce:transition-none"
+      style={{ left: position.left, width: position.width, opacity: position.opacity }}
     />
   );
 }

@@ -2,16 +2,31 @@
 
 import * as React from "react";
 import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowUp, Github, Instagram, Linkedin, Mail, Twitter, Youtube } from "lucide-react";
 import { Ticker } from "@/components/Ticker";
 import { CODE_OF_CONDUCT_URL, CONTACT_EMAIL, EVENTS_URL, SOCIAL_LINKS, TICKETS_URL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
+/*
+  GSAP is loaded on demand, not imported. The footer is the last thing on the
+  page, so shipping about 110 KB of animation library on first paint only
+  slowed the load for the many visitors who never scroll this far. It now
+  arrives when the footer nears the viewport, or on the first hover of a
+  magnetic button, whichever comes first. One shared promise, so it is only
+  ever fetched and registered once.
+*/
+type Gsap = typeof import("gsap").gsap;
+let gsapLoad: Promise<Gsap> | null = null;
+
+function loadGsap(): Promise<Gsap> {
+  gsapLoad ??= Promise.all([import("gsap"), import("gsap/ScrollTrigger")]).then(([g, st]) => {
+    g.gsap.registerPlugin(st.ScrollTrigger);
+    return g.gsap;
+  });
+  return gsapLoad;
 }
+
+const reducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 /*
   Footer-scoped styles. The glass and glow recipes below were written against
@@ -97,46 +112,48 @@ const MagneticButton = React.forwardRef<HTMLElement, MagneticButtonProps>(
 
     useEffect(() => {
       const element = localRef.current;
-      if (!element) return;
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      if (!element || reducedMotion()) return;
+      let gsap: Gsap | null = null;
 
-      const ctx = gsap.context(() => {
-        const handleMouseMove = (e: MouseEvent) => {
-          const rect = element.getBoundingClientRect();
-          const x = e.clientX - rect.left - rect.width / 2;
-          const y = e.clientY - rect.top - rect.height / 2;
-          gsap.to(element, {
-            x: x * 0.4,
-            y: y * 0.4,
-            rotationX: -y * 0.15,
-            rotationY: x * 0.15,
-            scale: 1.05,
-            ease: "power2.out",
-            duration: 0.4,
-          });
-        };
+      // The first hover starts the fetch; the lean begins once it lands.
+      const handleMouseMove = (e: MouseEvent) => {
+        if (!gsap) {
+          loadGsap().then((g) => (gsap = g));
+          return;
+        }
+        const rect = element.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        gsap.to(element, {
+          x: x * 0.4,
+          y: y * 0.4,
+          rotationX: -y * 0.15,
+          rotationY: x * 0.15,
+          scale: 1.05,
+          ease: "power2.out",
+          duration: 0.4,
+        });
+      };
 
-        const handleMouseLeave = () => {
-          gsap.to(element, {
-            x: 0,
-            y: 0,
-            rotationX: 0,
-            rotationY: 0,
-            scale: 1,
-            ease: "elastic.out(1, 0.3)",
-            duration: 1.2,
-          });
-        };
+      const handleMouseLeave = () => {
+        gsap?.to(element, {
+          x: 0,
+          y: 0,
+          rotationX: 0,
+          rotationY: 0,
+          scale: 1,
+          ease: "elastic.out(1, 0.3)",
+          duration: 1.2,
+        });
+      };
 
-        element.addEventListener("mousemove", handleMouseMove);
-        element.addEventListener("mouseleave", handleMouseLeave);
-        return () => {
-          element.removeEventListener("mousemove", handleMouseMove);
-          element.removeEventListener("mouseleave", handleMouseLeave);
-        };
-      }, element);
-
-      return () => ctx.revert();
+      element.addEventListener("mousemove", handleMouseMove);
+      element.addEventListener("mouseleave", handleMouseLeave);
+      return () => {
+        element.removeEventListener("mousemove", handleMouseMove);
+        element.removeEventListener("mouseleave", handleMouseLeave);
+        gsap?.killTweensOf(element);
+      };
     }, []);
 
     return (
@@ -177,36 +194,56 @@ export function CinematicFooter() {
   const linksRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!footerRef.current) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const footer = footerRef.current;
+    if (!footer || reducedMotion()) return;
+    let ctx: { revert: () => void } | null = null;
+    let cancelled = false;
 
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        giantTextRef.current,
-        { y: "10vh", scale: 0.8, opacity: 0 },
-        {
-          y: "0vh",
-          scale: 1,
-          opacity: 1,
-          ease: "power1.out",
-          scrollTrigger: { trigger: footerRef.current, start: "top 95%", end: "bottom bottom", scrub: 1 },
-        }
-      );
+    // A generous margin so the reveal is wired up well before the footer is
+    // on screen: its starting state is hidden, and setting that while the
+    // footer is already visible would flash.
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        observer.disconnect();
+        loadGsap().then((gsap) => {
+          if (cancelled) return;
+          ctx = gsap.context(() => {
+            gsap.fromTo(
+              giantTextRef.current,
+              { y: "10vh", scale: 0.8, opacity: 0 },
+              {
+                y: "0vh",
+                scale: 1,
+                opacity: 1,
+                ease: "power1.out",
+                scrollTrigger: { trigger: footer, start: "top 95%", end: "bottom bottom", scrub: 1 },
+              }
+            );
 
-      gsap.fromTo(
-        [headingRef.current, linksRef.current],
-        { y: 50, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          stagger: 0.15,
-          ease: "power3.out",
-          scrollTrigger: { trigger: footerRef.current, start: "top 85%", end: "bottom bottom", scrub: 1 },
-        }
-      );
-    }, footerRef);
+            gsap.fromTo(
+              [headingRef.current, linksRef.current],
+              { y: 50, opacity: 0 },
+              {
+                y: 0,
+                opacity: 1,
+                stagger: 0.15,
+                ease: "power3.out",
+                scrollTrigger: { trigger: footer, start: "top 85%", end: "bottom bottom", scrub: 1 },
+              }
+            );
+          }, footer);
+        });
+      },
+      { rootMargin: "800px 0px" }
+    );
+    observer.observe(footer);
 
-    return () => ctx.revert();
+    return () => {
+      cancelled = true;
+      observer.disconnect();
+      ctx?.revert();
+    };
   }, []);
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });

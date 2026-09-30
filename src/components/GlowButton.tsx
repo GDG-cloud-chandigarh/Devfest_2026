@@ -1,10 +1,6 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { GlowEffect } from "@/components/ui/glow-effect";
 import { cn } from "@/lib/utils";
-
-/** Google brand palette: blue, green, red, yellow. */
-const GDG_COLORS = ["#4285F4", "#34A853", "#EA4335", "#FBBC04"];
 
 const sizeStyles = {
   sm: { button: "tracking-wide px-5 py-2.5 text-sm", icon: "h-3.5 w-3.5" },
@@ -41,7 +37,8 @@ export function GlowButton({ href, children, className, size = "md", hideIcon = 
 
   return (
     <div className="relative inline-block">
-      <GlowEffect colors={GDG_COLORS} mode="colorShift" blur="soft" duration={3} scale={0.95} />
+      {/* Colour-shifting halo in the Google palette; a CSS animation, see .gdg-glow. */}
+      <span aria-hidden="true" className="gdg-glow pointer-events-none absolute inset-0 scale-95 rounded-full blur" />
       {isExternal ? (
         <a href={href} className={classes}>
           {content}

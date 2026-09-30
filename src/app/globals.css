@@ -83,3 +83,82 @@ h6 {
     animation: none;
   }
 }
+
+/*
+  Grid squares (ui/animated-grid-pattern.tsx). Fade in, fade out, then rest
+  dark. Duration and a per-square offset come from inline styles, so every
+  square runs this one keyframe out of step with the others.
+*/
+@keyframes grid-square {
+  0% {
+    opacity: 0;
+  }
+  43% {
+    opacity: var(--grid-max);
+  }
+  86%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.grid-square {
+  opacity: 0;
+  animation: grid-square linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grid-square {
+    animation: none;
+    opacity: calc(var(--grid-max) * 0.5);
+  }
+}
+
+/*
+  Button glow (GlowButton). Two registered colour properties feed a conic
+  gradient; registering them with @property is what lets CSS interpolate them,
+  which it cannot do between two gradient values directly. Steps through the
+  Google palette and back, like the framer-motion version it replaces, but
+  with no JavaScript running each frame.
+*/
+@property --glow-a {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #4285f4;
+}
+
+@property --glow-b {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #34a853;
+}
+
+@keyframes gdg-glow {
+  0% {
+    --glow-a: #4285f4;
+    --glow-b: #34a853;
+  }
+  33.333% {
+    --glow-a: #34a853;
+    --glow-b: #ea4335;
+  }
+  66.667% {
+    --glow-a: #ea4335;
+    --glow-b: #fbbc04;
+  }
+  100% {
+    --glow-a: #fbbc04;
+    --glow-b: #4285f4;
+  }
+}
+
+.gdg-glow {
+  background: conic-gradient(from 0deg at 50% 50%, var(--glow-a) 0%, var(--glow-b) 50%, var(--glow-a) 100%);
+  animation: gdg-glow 3s linear infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gdg-glow {
+    animation: none;
+  }
+}
