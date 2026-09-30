@@ -23,7 +23,7 @@ const RECAP_ITEMS: ({ photo: string; alt: string } | { color: string; stat: stri
 
 // Height is driven off the viewport so the band fills the screen; the 3:4 ratio
 // then sets the width, which keeps every item portrait at any size.
-const ITEM_SIZE = "h-[32vh] aspect-[3/4] shrink-0 sm:h-[36vh] lg:h-[38vh]";
+const ITEM_SIZE = "h-[44vh] aspect-[3/4] shrink-0 sm:h-[50vh] lg:h-[54vh]";
 
 function RecapItem({ item }: { item: (typeof RECAP_ITEMS)[number] }) {
   return (
