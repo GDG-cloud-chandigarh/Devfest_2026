@@ -2,18 +2,21 @@ import { Fragment } from "react";
 import { Glyph } from "@/components/Glyph";
 import { SPEAKER_CFP_URL } from "@/lib/constants";
 
-const ITEMS = [
-  "\u{1F3A4} Call for Speakers | DevFest Chandigarh 2026",
-  "Got a tech idea or a story to share? Take the stage and inspire the developer community",
-  "Submit your session →",
-];
+const PHRASE = "\u{1F3A4} Call for Speakers | DevFest Chandigarh 2026";
+
+/*
+  The loop slides the track by half its width, so each run has to be at least
+  a screenful wide or the seam shows as a gap. One phrase is nowhere near
+  that, hence the repeats: enough to overflow a wide desktop.
+*/
+const PER_RUN = 8;
 
 function Run() {
   return (
     <div className="flex items-center gap-8 px-4">
-      {ITEMS.map((item) => (
-        <Fragment key={item}>
-          <span>{item}</span>
+      {Array.from({ length: PER_RUN }, (_, i) => (
+        <Fragment key={i}>
+          <span>{PHRASE}</span>
           <Glyph name="asterisk" className="h-2.5 opacity-60 invert" />
         </Fragment>
       ))}
