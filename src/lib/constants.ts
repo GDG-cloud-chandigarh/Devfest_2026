@@ -7,6 +7,7 @@ export const EVENT_START = Date.parse("2026-10-24T00:00:00+05:30");
 /** AllEvents listing, the only place tickets are sold. */
 export const TICKETS_URL =
   "https://allevents.in/chandigarh/cloud-community-day-devfest-chandigarh-tickets/80001690026969";
+export const CODE_FOR_COMMUNITIES_URL = "https://hackculture.io/hackathons/code-for-communities-chandigarh";
 export const EVENTS_URL = "https://gdg.community.dev/gdg-cloud-chandigarh/#past-events";
 
 export const SOCIAL_LINKS = {

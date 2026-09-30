@@ -6,7 +6,7 @@ import { Faqs } from "@/components/Faqs";
 import { FocusAreas } from "@/components/FocusAreas";
 import { FormatsGrid } from "@/components/FormatsGrid";
 import { RecapsMarquee } from "@/components/RecapsMarquee";
-import { VenuesSection } from "@/components/VenuesSection";
+import { OtherEvents } from "@/components/OtherEvents";
 import { DynamicTextSlider } from "@/components/ui/dynamic-text-slider";
 import { CinematicFooter } from "@/components/ui/motion-footer";
 import { SITE_TAGLINE, TICKETS_URL } from "@/lib/constants";
@@ -38,7 +38,7 @@ export default function HomePage() {
       <FormatsGrid />
 
       <DarkBand top="reverse" bottom="reverse">
-        <VenuesSection />
+        <OtherEvents />
       </DarkBand>
 
       <FocusAreas />

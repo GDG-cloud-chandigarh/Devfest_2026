@@ -12,7 +12,7 @@ const FAQS: { question: string; answer: React.ReactNode }[] = [
   {
     question: "When and where is it?",
     answer:
-      "Cloud Community Day is 23rd October 2026 and DevFest is 24th October 2026, both in Chandigarh.",
+      "DevFest is 24th October 2026 in Chandigarh. Cloud Community Day and the Code for Communities hackathon both run on the 23rd, the day before.",
   },
   {
     question: "How do I get a ticket?",
