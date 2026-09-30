@@ -55,3 +55,31 @@ h6 {
     animation: none;
   }
 }
+
+/*
+  GDG loader (ui/gdg-loader.tsx). Each chevron scales as a unit about its own
+  centre, the two half a cycle apart, so < and > beat alternately. Transform
+  only: fading would make the top capsule see-through and show the tucked
+  one underneath. fill-box makes each group scale about its own bounding box.
+*/
+@keyframes gdg-beat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.84);
+  }
+}
+
+.gdg-chevron {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: gdg-beat 1.2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gdg-chevron {
+    animation: none;
+  }
+}
