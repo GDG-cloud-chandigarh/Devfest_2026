@@ -13,7 +13,7 @@ const TEAM: TeamMember[] = [
   { id: "cherish", name: "Cherish Santoshi", role: "Organizer", image: "/team/cherish.jpeg", linkedin: "https://www.linkedin.com/in/cherishsantoshi/" },
   { id: "tushar", name: "Tushar Shah", role: "Co-Organizer", image: "/team/tushar.jpeg", linkedin: "https://www.linkedin.com/in/tushar21shah/" },
   { id: "purahan", name: "Purahan Gupta", role: "Core Team", image: "/team/purahan.jpg", linkedin: "https://www.linkedin.com/in/purahan/" },
-  { id: "manik", name: "Manik", role: "Core Team", image: "/team/manik.jpeg", linkedin: "https://www.linkedin.com/in/mrmanik/" },
+  { id: "divanshi", name: "Divanshi Arora", role: "Core Team", image: "/team/divanshi.jpeg", linkedin: "https://www.linkedin.com/in/divanshi-arora/" },
   { id: "shatakshi", name: "Shatakshi", role: "Core Team", image: "/team/shatakshi.jpeg", linkedin: "https://www.linkedin.com/in/shatakshi-bhardwaj-445295281/" },
   { id: "krishanu", name: "Krishanu Mishra", role: "Core Team", image: "/team/krishanu.jpg", linkedin: "https://www.linkedin.com/in/krishanu-mishra-aa531b276/" },
   { id: "sarang", name: "Sarang Ahlawat", role: "Core Team", image: "/team/sarang.jpeg", linkedin: "https://www.linkedin.com/in/sarangahlawat/" },
