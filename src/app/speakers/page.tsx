@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Mic } from "lucide-react";
 import { GlowButton } from "@/components/GlowButton";
 import { SectionHeader } from "@/components/SectionHeader";
+import { Sticker } from "@/components/Sticker";
 import { SpeakerGrid, type Speaker } from "@/components/ui/speaker-grid";
 import { SPEAKER_CFP_URL } from "@/lib/constants";
 
@@ -19,7 +20,11 @@ const SPEAKERS: Speaker[] = ["AI & ML", "Gemini & Agents", "Google Cloud", "Fire
 
 export default function SpeakersPage() {
   return (
-    <div className="py-12 sm:py-16">
+    <div className="relative py-12 sm:py-16">
+      <Sticker name="plus" className="left-[2%] top-[30%] hidden h-12 min-[1300px]:block" rotate={14} />
+      <Sticker name="bubbles" className="right-[1.5%] top-[52%] hidden h-8 min-[1300px]:block" delay={3} />
+      <Sticker name="minus" className="right-[2.5%] top-[24%] hidden h-5 min-[1300px]:block" rotate={-10} delay={1} />
+      <Sticker name="arrow" className="left-[1.5%] top-[72%] hidden h-7 min-[1300px]:block" rotate={-8} delay={4} />
       <SectionHeader title="Speakers" />
       <p className="mx-auto mt-4 max-w-6xl px-4 text-neutral-dark/80 sm:px-8">
         Developers, researchers and community leaders sharing what they have built on AI, Google Cloud, Android, Web and

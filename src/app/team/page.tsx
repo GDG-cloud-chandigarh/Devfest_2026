@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SectionHeader } from "@/components/SectionHeader";
+import { Sticker } from "@/components/Sticker";
 import { TeamShowcase, type TeamMember } from "@/components/ui/team-showcase";
 
 export const metadata: Metadata = {
@@ -20,7 +21,11 @@ const TEAM: TeamMember[] = [
 
 export default function TeamPage() {
   return (
-    <div className="py-12 sm:py-16">
+    <div className="relative py-12 sm:py-16">
+      <Sticker name="quote" className="left-[2%] top-[34%] hidden h-10 min-[1300px]:block" rotate={-8} />
+      <Sticker name="minus" className="right-[3%] top-[72%] hidden h-6 min-[1300px]:block" rotate={12} delay={2} />
+      <Sticker name="hash" className="right-[2.5%] top-[30%] hidden h-10 min-[1300px]:block" rotate={-12} delay={4} />
+      <Sticker name="halfLeft" className="left-[3%] top-[68%] hidden h-14 min-[1300px]:block" delay={1} />
       <SectionHeader title="The team" />
       <p className="mx-auto mt-4 max-w-6xl px-4 text-neutral-dark/80 sm:px-8">
         DevFest Chandigarh is run by the volunteers of GDG Cloud Chandigarh, who plan the sessions, find the speakers and

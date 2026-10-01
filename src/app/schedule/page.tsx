@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Brain, DoorOpen, Flag, Gift, Laptop, Mic, PartyPopper, Presentation, Utensils, Zap } from "lucide-react";
 import { GlowButton } from "@/components/GlowButton";
 import { SectionHeader } from "@/components/SectionHeader";
+import { Sticker } from "@/components/Sticker";
 import { Timeline, type TimelineItem } from "@/components/ui/timeline";
 import { TICKETS_URL } from "@/lib/constants";
 
@@ -100,7 +101,14 @@ const ITEMS: TimelineItem[] = [
 
 export default function SchedulePage() {
   return (
-    <div className="py-12 sm:py-16">
+    <div className="relative py-12 sm:py-16">
+      {/* The timeline is narrow, so the page has room either side from lg up. */}
+      <Sticker name="halfLeft" className="right-[8%] top-[32%] hidden h-24 lg:block" />
+      <Sticker name="hash" className="left-[9%] top-[58%] hidden h-12 lg:block" rotate={-10} delay={3} />
+      <Sticker name="minus" className="right-[4%] top-[82%] hidden h-5 lg:block" rotate={-6} delay={1} />
+      <Sticker name="quote" className="left-[10%] top-[30%] hidden h-8 lg:block" rotate={-8} delay={2} />
+      <Sticker name="plus" className="right-[9%] top-[56%] hidden h-10 lg:block" rotate={14} delay={4} />
+      <Sticker name="bubbles" className="left-[7%] top-[86%] hidden h-7 lg:block" delay={5} />
       <SectionHeader title="Schedule" />
       <div className="mx-auto mt-4 max-w-6xl px-4 sm:px-8">
         <p className="text-neutral-dark/80">

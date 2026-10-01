@@ -162,3 +162,25 @@ h6 {
     animation: none;
   }
 }
+
+/* Decorative shapes (Sticker): a slow bob, keeping each one's own tilt. */
+@keyframes sticker-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--r));
+  }
+  50% {
+    transform: translateY(-10px) rotate(var(--r));
+  }
+}
+
+.sticker {
+  transform: rotate(var(--r));
+  animation: sticker-float 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sticker {
+    animation: none;
+  }
+}

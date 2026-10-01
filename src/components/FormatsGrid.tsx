@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Glyph } from "@/components/Glyph";
 import { CornerHandles } from "@/components/CornerHandles";
 import { SectionHeader } from "@/components/SectionHeader";
+import { Sticker } from "@/components/Sticker";
 import { GlowButton } from "@/components/GlowButton";
 import { TICKETS_URL } from "@/lib/constants";
 
@@ -100,7 +101,11 @@ function FormatCard({ format }: { format: Format }) {
 
 export function FormatsGrid() {
   return (
-    <section className="flex min-h-dvh flex-col justify-center py-16 text-neutral-dark">
+    <section className="relative flex min-h-dvh flex-col justify-center py-16 text-neutral-dark">
+      <Sticker name="brackets" className="left-[2%] top-[22%] hidden h-14 min-[1300px]:block" rotate={-8} />
+      <Sticker name="curly" className="right-[3%] top-[55%] hidden h-20 min-[1300px]:block" delay={3} />
+      <Sticker name="plus" className="right-[2%] top-[20%] hidden h-10 min-[1300px]:block" rotate={20} delay={1} />
+      <Sticker name="halfLeft" className="bottom-[16%] left-[2.5%] hidden h-16 min-[1300px]:block" delay={4} />
       <SectionHeader title="DevFest 2026" />
 
       <div className="mx-auto w-full mt-10 grid max-w-6xl grid-cols-1 gap-4 px-4 sm:px-8 md:auto-rows-[17rem] md:grid-cols-4">
@@ -110,7 +115,10 @@ export function FormatsGrid() {
       </div>
 
       <div className="mt-10 flex justify-center">
-        <GlowButton href={TICKETS_URL}>Get Tickets</GlowButton>
+        <div className="relative">
+          <Sticker name="arrow" className="inset-y-0 right-full my-auto mr-6 hidden h-9 sm:block" delay={1} />
+          <GlowButton href={TICKETS_URL}>Get Tickets</GlowButton>
+        </div>
       </div>
     </section>
   );

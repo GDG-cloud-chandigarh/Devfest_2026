@@ -1,5 +1,6 @@
 import { CornerHandles } from "@/components/CornerHandles";
 import { SectionHeader } from "@/components/SectionHeader";
+import { Sticker } from "@/components/Sticker";
 
 type Track = {
   title: string;
@@ -66,7 +67,11 @@ function TrackCard({ track }: { track: Track }) {
 
 export function FocusAreas() {
   return (
-    <section className="flex min-h-dvh flex-col justify-center py-16 text-neutral-dark">
+    <section className="relative flex min-h-dvh flex-col justify-center py-16 text-neutral-dark">
+      <Sticker name="equals" className="right-[2%] top-[18%] hidden h-12 min-[1300px]:block" rotate={8} delay={2} />
+      <Sticker name="colon" className="bottom-[20%] left-[3%] hidden h-16 min-[1300px]:block" delay={5} />
+      <Sticker name="cross" className="left-[2%] top-[22%] hidden h-9 min-[1300px]:block" rotate={-15} delay={1} />
+      <Sticker name="halfRight" className="bottom-[16%] right-[2.5%] hidden h-16 min-[1300px]:block" delay={3} />
       <SectionHeader title="Focus Areas" />
       <p className="mx-auto mt-4 w-full max-w-6xl px-4 text-neutral-dark/70 sm:px-8">
         Eight tracks across the Google stack. Pick a lane for the day, or wander between them.
