@@ -47,15 +47,15 @@ const FAQS: { question: string; answer: React.ReactNode }[] = [
     ),
   },
   {
-    question: "Can my company sponsor DevFest?",
+    question: "Can my community or company partner with DevFest?",
     answer: (
       <>
         Yes. Email{" "}
         <a href={`mailto:${CONTACT_EMAIL}`} className="font-semibold underline underline-offset-2">
           {CONTACT_EMAIL}
         </a>{" "}
-        and we will send the sponsorship prospectus. Packages are flexible and we are happy to build one around what you
-        want out of the event.
+        and tell us about your community or company. We are happy to shape a partnership around what you want out of
+        the event.
       </>
     ),
   },
