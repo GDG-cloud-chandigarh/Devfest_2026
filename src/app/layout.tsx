@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { headingFont, bodyFont, monoFont } from "@/lib/fonts";
 import { Navbar } from "@/components/Navbar";
 import { SiteBackground } from "@/components/SiteBackground";
@@ -48,6 +50,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SpeakerCallBar />
         <Navbar />
         <main className="flex-1">{children}</main>
+        {/* Vercel page views and real-user Core Web Vitals; they only report once deployed on Vercel. */}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
