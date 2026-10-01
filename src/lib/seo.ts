@@ -79,7 +79,7 @@ export const STRUCTURED_DATA = {
   "@context": "https://schema.org",
   "@graph": [
     ORGANIZER,
-    // Both start at 9:30 IST. Search results show it; the page deliberately does not.
+    // Both start at 9:30 IST. The home page deliberately leaves it out; /schedule has the day.
     event(SITE_NAME, "2026-10-24T09:30:00+05:30", SITE_DESCRIPTION),
     event(
       "Cloud Community Day Chandigarh 2026",
