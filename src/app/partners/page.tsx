@@ -19,6 +19,7 @@ const COMMUNITY_PARTNERS: Partner[] = [
   { name: "ACM Chapter, CCE", logo: logo("acm_chapter_cce.jpeg") },
   { name: "Alexa Developers Community, Chandigarh University", logo: logo("alexa_developers_community_cu.png") },
   { name: "BUG2BUILD", logo: logo("bug2build.jpeg") },
+  { name: "Builders Hub", logo: logo("builders_hub.jpg") },
   { name: "C Square", logo: logo("c_square.png") },
   { name: "Code Zen", logo: logo("code_zen.jpg") },
   { name: "Devantra", logo: logo("devantra.jpg") },
