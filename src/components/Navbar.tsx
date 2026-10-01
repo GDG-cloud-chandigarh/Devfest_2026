@@ -8,7 +8,7 @@ import { Lockup } from "./Lockup";
 import { NavHeader } from "./ui/nav-header";
 
 const NAV_LINKS = [
-  { href: "/#speakers", label: "Speakers" },
+  { href: "/speakers", label: "Speakers" },
   { href: "/schedule", label: "Schedule" },
   { href: "/#sponsors", label: "Sponsors" },
   { href: "/team", label: "Team" },
