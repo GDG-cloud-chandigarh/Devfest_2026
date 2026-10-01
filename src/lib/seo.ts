@@ -53,12 +53,11 @@ const VENUE = {
   },
 };
 
-function event(name: string, start: string, description: string, price: string) {
+function event(name: string, start: string, description: string) {
   return {
     "@type": "Event",
     name,
     description,
-    // Date alone where no start time is confirmed; a guessed time is worse.
     startDate: start,
     eventStatus: "https://schema.org/EventScheduled",
     eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
@@ -66,11 +65,10 @@ function event(name: string, start: string, description: string, price: string) 
     image: [`${SITE_URL}/opengraph-image`],
     url: SITE_URL,
     organizer: ORGANIZER,
+    // No price: prices are kept off the site, AllEvents shows them.
     offers: {
       "@type": "Offer",
       url: TICKETS_URL,
-      price,
-      priceCurrency: "INR",
       availability: "https://schema.org/InStock",
     },
   };
@@ -81,13 +79,12 @@ export const STRUCTURED_DATA = {
   "@context": "https://schema.org",
   "@graph": [
     ORGANIZER,
-    // Doors at 9:30 IST. Search results show it; the page deliberately does not.
-    event(SITE_NAME, "2026-10-24T09:30:00+05:30", SITE_DESCRIPTION, "349"),
+    // Both start at 9:30 IST. Search results show it; the page deliberately does not.
+    event(SITE_NAME, "2026-10-24T09:30:00+05:30", SITE_DESCRIPTION),
     event(
       "Cloud Community Day Chandigarh 2026",
-      "2026-10-23",
-      "A full day on Google Cloud and AI from GDG Cloud Chandigarh, the day before DevFest.",
-      "299"
+      "2026-10-23T09:30:00+05:30",
+      "A full day on Google Cloud and AI from GDG Cloud Chandigarh, the day before DevFest."
     ),
   ],
 };

@@ -17,7 +17,7 @@ const FAQS: { question: string; answer: React.ReactNode }[] = [
   {
     question: "How do I get a ticket?",
     answer:
-      "Tickets are sold through AllEvents: Cloud Community Day on the 23rd at ₹299, DevFest on the 24th at ₹349, or a Season Pass covering both at ₹549. Any Get Tickets button goes straight there.",
+      "Tickets are sold through AllEvents: Cloud Community Day on the 23rd, DevFest on the 24th, or a Season Pass covering both. Any Get Tickets button goes straight there.",
   },
   {
     question: "What will the sessions cover?",
