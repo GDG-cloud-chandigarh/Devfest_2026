@@ -12,9 +12,35 @@ export const metadata: Metadata = {
   alternates: { canonical: "/partners" },
 };
 
-// Placeholder slots until partners are confirmed. Replace each with the real
-// partner (name, type, logo in public/partners/, url) as they are announced.
-const PARTNERS: Partner[] = Array.from({ length: 8 }, () => ({ name: "Partner TBA", type: "Community partner" }));
+const logo = (file: string) => `/partners/${file}`;
+
+// Alphabetical. Add a url to any partner to make its tile link out.
+const COMMUNITY_PARTNERS: Partner[] = [
+  { name: "ACM Chapter, CCE", logo: logo("acm_chapter_cce.jpeg") },
+  { name: "Alexa Developers Community, Chandigarh University", logo: logo("alexa_developers_community_cu.png") },
+  { name: "BUG2BUILD", logo: logo("bug2build.jpeg") },
+  { name: "C Square", logo: logo("c_square.png") },
+  { name: "Code Zen", logo: logo("code_zen.jpg") },
+  { name: "Devantra", logo: logo("devantra.jpg") },
+  { name: "Devengers", logo: logo("devengers.jpeg") },
+  { name: "DevPath", logo: logo("devpath.jpeg") },
+  { name: "E-Cell CEC, CGC Landran", logo: logo("ecell_cec_cgc_landran.jpg") },
+  { name: "E-Cell CGC-COE", logo: logo("ecell_cgc_coe.jpeg") },
+  { name: "Fusion", logo: logo("fusion.png"), darkTile: true },
+  { name: "GDG On Campus SVIET", logo: logo("gdg_on_campus_sviet.jpeg") },
+  { name: "GeeksforGeeks Campus Body, Chandigarh University", logo: logo("gfg_campus_body_cu.png") },
+  { name: "Hacknfinity", logo: logo("hacknfinity.jpg") },
+  { name: "OSEN Chandigarh", logo: logo("osen_chandigarh.jpg") },
+  { name: "Project Hub Community", logo: logo("project_hub.jpg") },
+  { name: "Recess Tribe Community", logo: logo("recess_tribe.jpg") },
+  { name: "SheBuilds", logo: logo("shebuilds.jpg") },
+  { name: "SkillBugz", logo: logo("skillbugz.jpg") },
+  { name: "Spark Tech AI Hub", logo: logo("spark_tech_ai_hub.jpg") },
+  { name: "The Ascent Circle", logo: logo("the_ascent_circle.png") },
+  { name: "The Uniques Community", logo: logo("the_uniques.png") },
+  { name: "The Visionary Minds", logo: logo("the_visionary_minds.jpg") },
+  { name: "Venture Nexus", logo: logo("venture_nexus.jpg") },
+];
 
 export default function PartnersPage() {
   return (
@@ -29,7 +55,10 @@ export default function PartnersPage() {
       </p>
 
       <div className="mx-auto mt-12 max-w-6xl px-4 sm:px-8">
-        <PartnerGrid partners={PARTNERS} />
+        <h2 className="font-heading text-2xl font-bold text-neutral-dark">Community partners</h2>
+        <div className="mt-6">
+          <PartnerGrid partners={COMMUNITY_PARTNERS} />
+        </div>
 
         <div className="mt-16 flex flex-col items-center rounded-3xl border border-neutral-dark/10 bg-cream px-6 py-16 text-center">
           <span className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-neutral-dark bg-google-green/20">
