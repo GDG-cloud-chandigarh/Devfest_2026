@@ -4,15 +4,40 @@ import { GlowButton } from "@/components/GlowButton";
 import { SectionHeader } from "@/components/SectionHeader";
 import { Sticker } from "@/components/Sticker";
 import { PartnerGrid, type Partner } from "@/components/ui/partner-grid";
-import { CONTACT_EMAIL } from "@/lib/constants";
+import { CONTACT_EMAIL, SPEAKER_CFP_URL, TICKETS_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Partners",
-  description: "The community partners behind DevFest Chandigarh 2026, and how to partner with us.",
+  description: "The sponsors and community partners behind DevFest Chandigarh 2026, and how to partner with us.",
   alternates: { canonical: "/partners" },
 };
 
 const logo = (file: string) => `/partners/${file}`;
+
+// One partner per role, shown in pairs around the community partners.
+const ROLES_ABOVE: { title: string; partner: Partner }[] = [
+  { title: "Title Sponsor", partner: { name: "Google for Developers", logo: logo("google_for_developers.svg"), url: "https://developers.google.com" } },
+  { title: "Venue Partner", partner: { name: "Chandigarh University", logo: logo("chandigarh_university.png"), url: "https://www.cuchd.in" } },
+];
+const ROLES_BELOW: { title: string; partner: Partner }[] = [
+  { title: "Ticketing Partner", partner: { name: "AllEvents", logo: logo("allevents.png"), url: TICKETS_URL } },
+  { title: "Call for Speakers Partner", partner: { name: "Sessionize", logo: logo("sessionize.jpg"), url: SPEAKER_CFP_URL } },
+];
+
+function RoleRow({ roles }: { roles: { title: string; partner: Partner }[] }) {
+  return (
+    <div className="grid gap-10 sm:grid-cols-2">
+      {roles.map(({ title, partner }) => (
+        <section key={title}>
+          <h2 className="font-heading text-2xl font-bold text-neutral-dark">{title}</h2>
+          <div className="mt-6 max-w-xs">
+            <PartnerGrid partners={[partner]} className="grid-cols-1 sm:grid-cols-1 lg:grid-cols-1" />
+          </div>
+        </section>
+      ))}
+    </div>
+  );
+}
 
 // Alphabetical. Add a url to any partner to make its tile link out.
 const COMMUNITY_PARTNERS: Partner[] = [
@@ -56,9 +81,15 @@ export default function PartnersPage() {
       </p>
 
       <div className="mx-auto mt-12 max-w-6xl px-4 sm:px-8">
-        <h2 className="font-heading text-2xl font-bold text-neutral-dark">Community partners</h2>
+        <RoleRow roles={ROLES_ABOVE} />
+
+        <h2 className="mt-16 font-heading text-2xl font-bold text-neutral-dark">Community Partners</h2>
         <div className="mt-6">
           <PartnerGrid partners={COMMUNITY_PARTNERS} />
+        </div>
+
+        <div className="mt-16">
+          <RoleRow roles={ROLES_BELOW} />
         </div>
 
         <div className="mt-16 flex flex-col items-center rounded-3xl border border-neutral-dark/10 bg-cream px-6 py-16 text-center">

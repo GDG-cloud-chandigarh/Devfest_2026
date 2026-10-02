@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Handshake } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export interface Partner {
   name: string;
@@ -13,9 +14,9 @@ export interface Partner {
 }
 
 /** Partner logos as tiles, each linking out when the partner has a site. */
-export function PartnerGrid({ partners }: { partners: Partner[] }) {
+export function PartnerGrid({ partners, className }: { partners: Partner[]; className?: string }) {
   return (
-    <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+    <ul className={cn("grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4", className)}>
       {partners.map((p, i) => {
         const tile = (
           <>
@@ -23,7 +24,15 @@ export function PartnerGrid({ partners }: { partners: Partner[] }) {
               className={`relative flex aspect-[3/2] w-full items-center justify-center rounded-2xl border border-neutral-dark/10 p-6 ${p.darkTile ? "bg-neutral-dark" : "bg-white"}`}
             >
               {p.logo ? (
-                <Image src={p.logo} alt={p.name} fill sizes="(min-width: 1024px) 25vw, 50vw" className="object-contain p-3 sm:p-4" />
+                <Image
+                  src={p.logo}
+                  alt={p.name}
+                  fill
+                  sizes="(min-width: 1024px) 25vw, 50vw"
+                  // The optimizer rejects SVG, and a vector needs no resizing anyway.
+                  unoptimized={p.logo.endsWith(".svg")}
+                  className="object-contain p-3 sm:p-4"
+                />
               ) : (
                 <Handshake aria-hidden="true" strokeWidth={1.25} className="h-1/2 w-1/2 text-neutral-dark/20" />
               )}
