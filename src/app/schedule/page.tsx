@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Brain, DoorOpen, Flag, Laptop, Mic, PartyPopper, Presentation, Utensils, Zap } from "lucide-react";
+import { Brain, DoorOpen, Flag, Laptop, Mic, PartyPopper, Presentation, Utensils } from "lucide-react";
 import { GlowButton } from "@/components/GlowButton";
 import { SectionHeader } from "@/components/SectionHeader";
 import { Sticker } from "@/components/Sticker";
@@ -8,7 +8,7 @@ import { TICKETS_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Schedule",
-  description: "The DevFest Chandigarh 2026 agenda for Saturday 24th October at C2 Auditorium, Chandigarh University, 9:00 AM to 5:15 PM: talks on agentic AI, Android, serverless and more, a panel, a quiz and swags.",
+  description: "The DevFest Chandigarh 2026 agenda for Saturday 24th October at C2 Auditorium, Chandigarh University, 9:00 AM to 5:15 PM: talks on agentic AI, Firebase, sandboxing agents and serverless, a panel, a quiz and swags.",
   alternates: { canonical: "/schedule" },
 };
 
@@ -41,7 +41,7 @@ const ITEMS: TimelineItem[] = [
   {
     id: "aprajita",
     label: "10:45 AM to 11:30 AM",
-    title: "From UX to AX: A Guide to Safe, Long Horizon Multi-Agent Definition",
+    title: "The Cheapest Token (Is the One You Never Send)",
     description: "Aprajita Verma, Frontend Architect @ Mycom, WTM Ambassador",
     icon: <Presentation />,
     accent: "bg-google-green/20",
@@ -49,16 +49,16 @@ const ITEMS: TimelineItem[] = [
   {
     id: "hemant",
     label: "11:30 AM to 12:15 PM",
-    title: "System Didn't work around a small AI-powered order workflow",
+    title: "The Agent Worked. The System Didn't.",
     description: "Hemant Gupta, Senior Software Engineer @ Agoda",
     icon: <Presentation />,
     accent: "bg-google-red/20",
   },
   {
-    id: "bilal",
+    id: "belal",
     label: "12:15 PM to 1:00 PM",
     title: "Technical Talk: Modern Software Workflows",
-    description: "Bilal, Tech Speaker. Topic to be announced.",
+    description: "Belal Khan, Google Developer Expert, YouTube @SimplifiedCoding. Topic to be announced.",
     icon: <Presentation />,
     accent: "bg-google-blue/20",
   },
@@ -73,8 +73,8 @@ const ITEMS: TimelineItem[] = [
   {
     id: "srushti",
     label: "2:00 PM to 2:45 PM",
-    title: "Developer Tools & Frameworks Session",
-    description: "Srushti, Tech Speaker. Topic to be announced.",
+    title: "Guardrails & Gatekeepers: Bulletproof Your AI Applications with Firebase",
+    description: "Srushti, SDE-2 @ Addepar, Google Developer Expert",
     icon: <Laptop />,
     accent: "bg-google-green/20",
   },
@@ -93,14 +93,6 @@ const ITEMS: TimelineItem[] = [
     description: "Abhishek Verma, Senior Software Engineer @ Exerp",
     icon: <Presentation />,
     accent: "bg-google-blue/20",
-  },
-  {
-    id: "neel",
-    label: "3:30 PM to 4:15 PM, parallel breakout track",
-    title: "Building AI-Powered Android Apps with Gemma and RAG",
-    description: "Neel Shah, SSE @ American Express, Google Developer Expert",
-    icon: <Zap />,
-    accent: "bg-google-green/20",
   },
   {
     id: "panel",
