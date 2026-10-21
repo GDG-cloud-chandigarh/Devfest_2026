@@ -42,7 +42,7 @@ const ORGANIZER = {
 */
 const VENUE = {
   "@type": "Place",
-  name: "Chandigarh University",
+  name: "C2 Auditorium, Chandigarh University",
   address: {
     "@type": "PostalAddress",
     streetAddress: "NH-05, Ludhiana - Chandigarh Highway",
@@ -53,12 +53,13 @@ const VENUE = {
   },
 };
 
-function event(name: string, start: string, description: string) {
+function event(name: string, start: string, end: string, description: string) {
   return {
     "@type": "Event",
     name,
     description,
     startDate: start,
+    endDate: end,
     eventStatus: "https://schema.org/EventScheduled",
     eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
     location: VENUE,
@@ -79,11 +80,12 @@ export const STRUCTURED_DATA = {
   "@context": "https://schema.org",
   "@graph": [
     ORGANIZER,
-    // Both start at 9:30 IST. The home page deliberately leaves it out; /schedule has the day.
-    event(SITE_NAME, "2026-10-24T09:30:00+05:30", SITE_DESCRIPTION),
+    // Both run 9:00 AM to 5:15 PM IST. The home page deliberately leaves it out; /schedule has the day.
+    event(SITE_NAME, "2026-10-24T09:00:00+05:30", "2026-10-24T17:15:00+05:30", SITE_DESCRIPTION),
     event(
       "Cloud Community Day Chandigarh 2026",
-      "2026-10-23T09:30:00+05:30",
+      "2026-10-23T09:00:00+05:30",
+      "2026-10-23T17:15:00+05:30",
       "A full day on Google Cloud and AI from GDG Cloud Chandigarh, the day before DevFest."
     ),
   ],

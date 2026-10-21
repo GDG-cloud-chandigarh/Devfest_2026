@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Brain, DoorOpen, Flag, Gift, Laptop, Mic, PartyPopper, Presentation, Utensils, Zap } from "lucide-react";
+import { Brain, DoorOpen, Flag, Laptop, Mic, PartyPopper, Presentation, Utensils, Zap } from "lucide-react";
 import { GlowButton } from "@/components/GlowButton";
 import { SectionHeader } from "@/components/SectionHeader";
 import { Sticker } from "@/components/Sticker";
@@ -8,92 +8,113 @@ import { TICKETS_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Schedule",
-  description: "The DevFest Chandigarh 2026 day on 24th October, from 9:30 AM to 4:30 PM: keynote, talks, workshops and more.",
+  description: "The DevFest Chandigarh 2026 agenda for Saturday 24th October at C2 Auditorium, Chandigarh University, 9:00 AM to 5:15 PM: talks on agentic AI, Android, serverless and more, a panel, a quiz and swags.",
   alternates: { canonical: "/schedule" },
 };
 
-// Tentative slots for the 24th. Swap in sessions and speakers as they are confirmed.
+// Running order for Saturday 24 October 2026, C2 Auditorium, Chandigarh University.
 const ITEMS: TimelineItem[] = [
   {
     id: "registration",
-    label: "9:30 AM",
-    title: "Registration and networking",
-    description: "Collect your badge, grab a coffee and meet the community.",
+    label: "9:00 AM to 9:45 AM",
+    title: "Registration & Entry",
+    description: "Badge collection, community welcome and partner showcase.",
     icon: <DoorOpen />,
     accent: "bg-google-blue/20",
   },
   {
-    id: "welcome",
-    label: "10:15 AM",
-    title: "Welcome to DevFest Chandigarh",
-    description: "Opening words from the GDG Cloud Chandigarh organisers.",
+    id: "opening",
+    label: "9:45 AM to 10:00 AM",
+    title: "Opening Address",
+    description: "Welcome remarks and day overview by the DevFest team.",
     icon: <Flag />,
     accent: "bg-google-red/20",
   },
   {
-    id: "keynote",
-    label: "10:30 AM",
-    title: "Keynote",
+    id: "mohit",
+    label: "10:00 AM to 10:45 AM",
+    title: "Safely Succeeding in the Age of Agentic AI",
+    description: "Mohit Gulati, Senior Product Manager @ Google",
     icon: <Mic />,
     accent: "bg-google-yellow/30",
   },
   {
-    id: "talks-1",
-    label: "11:15 AM",
-    title: "Tech talks: AI and Google Cloud",
+    id: "aprajita",
+    label: "10:45 AM to 11:30 AM",
+    title: "From UX to AX: A Guide to Safe, Long Horizon Multi-Agent Definition",
+    description: "Aprajita Verma, Frontend Architect @ Mycom, WTM Ambassador",
     icon: <Presentation />,
     accent: "bg-google-green/20",
   },
   {
-    id: "quiz",
-    label: "12:00 PM",
-    title: "Tech quiz",
-    description: "A quick-fire quiz on everything Google, with prizes for the sharpest answers.",
-    icon: <Brain />,
+    id: "hemant",
+    label: "11:30 AM to 12:15 PM",
+    title: "System Didn't work around a small AI-powered order workflow",
+    description: "Hemant Gupta, Senior Software Engineer @ Agoda",
+    icon: <Presentation />,
     accent: "bg-google-red/20",
+  },
+  {
+    id: "bilal",
+    label: "12:15 PM to 1:00 PM",
+    title: "Technical Talk: Modern Software Workflows",
+    description: "Bilal, Tech Speaker. Topic to be announced.",
+    icon: <Presentation />,
+    accent: "bg-google-blue/20",
   },
   {
     id: "lunch",
-    label: "12:30 PM",
-    title: "Lunch and networking",
+    label: "1:00 PM to 2:00 PM",
+    title: "Lunch & Networking Break",
+    description: "Lunch, networking and partner booth explorations.",
     icon: <Utensils />,
-    accent: "bg-google-blue/20",
-  },
-  {
-    id: "workshops",
-    label: "1:30 PM",
-    title: "Hands-on workshops",
-    description: "Bring your laptop and build along with the speakers.",
-    icon: <Laptop />,
-    accent: "bg-google-red/20",
-  },
-  {
-    id: "talks-2",
-    label: "2:30 PM",
-    title: "Tech talks: Android, Web and Firebase",
-    icon: <Presentation />,
     accent: "bg-google-yellow/30",
   },
   {
-    id: "games",
-    label: "3:00 PM",
-    title: "Games and giveaways",
-    description: "A breather between sessions: community games, swag and a few surprises.",
-    icon: <Gift />,
+    id: "srushti",
+    label: "2:00 PM to 2:45 PM",
+    title: "Developer Tools & Frameworks Session",
+    description: "Srushti, Tech Speaker. Topic to be announced.",
+    icon: <Laptop />,
+    accent: "bg-google-green/20",
+  },
+  {
+    id: "rajani-rishi",
+    label: "2:45 PM to 3:30 PM",
+    title: "Your Agent Just Ran rm -rf: Sandboxing AI Agents from Docker to GKE Agent Sandbox",
+    description: "Rajani Ekunde (Google Developer Expert, Docker Captain, WTM Ambassador) & Rishi",
+    icon: <Presentation />,
+    accent: "bg-google-red/20",
+  },
+  {
+    id: "abhishek",
+    label: "3:30 PM to 4:15 PM",
+    title: "Serverless Computing with Spring Cloud Function",
+    description: "Abhishek Verma, Senior Software Engineer @ Exerp",
+    icon: <Presentation />,
     accent: "bg-google-blue/20",
   },
   {
-    id: "lightning",
-    label: "3:30 PM",
-    title: "Lightning talks",
-    description: "Short, fast talks from the community.",
+    id: "neel",
+    label: "3:30 PM to 4:15 PM, parallel breakout track",
+    title: "Building AI-Powered Android Apps with Gemma and RAG",
+    description: "Neel Shah, SSE @ American Express, Google Developer Expert",
     icon: <Zap />,
     accent: "bg-google-green/20",
   },
   {
+    id: "panel",
+    label: "4:15 PM to 4:45 PM",
+    title: "Panel Discussion & Quiz",
+    description: "Industry trends, career insights and an attendee tech quiz.",
+    icon: <Brain />,
+    accent: "bg-google-yellow/30",
+  },
+  {
     id: "closing",
-    label: "4:00 PM to 4:30 PM",
-    title: "Closing, swag and group photo",
+    label: "4:45 PM to 5:15 PM",
+    title: "Closing Ceremony & Swags",
+    description: "Event wrap-up, community feedback and swag giveaways.",
     icon: <PartyPopper />,
     accent: "bg-google-blue/20",
   },
@@ -112,7 +133,11 @@ export default function SchedulePage() {
       <SectionHeader title="Schedule" />
       <div className="mx-auto mt-4 max-w-6xl px-4 sm:px-8">
         <p className="text-neutral-dark/80">
-          24th October 2026, 9:30 AM to 4:30 PM. Timings are tentative; sessions and speakers will be announced soon.
+          Saturday, 24th October 2026. Gates open at 9:00 AM at C2 Auditorium, Chandigarh University.
+        </p>
+        <p className="mt-2 text-neutral-dark/80">
+          7 speakers, mentorship from Googlers, and the finale of the Code for Communities hackathon, where teams present
+          their solutions to the jury.
         </p>
         <div className="mt-6">
           <GlowButton href={TICKETS_URL} size="sm">

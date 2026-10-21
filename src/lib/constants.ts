@@ -1,8 +1,8 @@
 export const SITE_NAME = "DevFest Chandigarh 2026";
 export const SITE_TAGLINE = "Chandigarh's largest tech celebration returns on October 24th, 2026.";
 
-/** DevFest doors, 9:30 IST. The countdown targets it; no time is printed on the page. */
-export const EVENT_START = Date.parse("2026-10-24T09:30:00+05:30");
+/** DevFest gates open, 9:00 IST. The countdown targets it; no time is printed on the page. */
+export const EVENT_START = Date.parse("2026-10-24T09:00:00+05:30");
 
 /** AllEvents listing, the only place tickets are sold. */
 export const TICKETS_URL =
