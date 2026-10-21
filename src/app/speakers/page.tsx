@@ -8,15 +8,27 @@ import { SPEAKER_CFP_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Speakers",
-  description: "The speakers at DevFest Chandigarh 2026, and how to submit a talk.",
+  description: "The speakers at DevFest Chandigarh 2026 on 24th October: Google, Google Developer Experts and engineers on agentic AI, Firebase, sandboxing agents and serverless.",
   alternates: { canonical: "/speakers" },
 };
 
-// One slot per track until speakers are confirmed. Replace each with the real
-// speaker (name, role, topic, photo in public/speakers/) as they are announced.
-const SPEAKERS: Speaker[] = ["AI & ML", "Gemini & Agents", "Google Cloud", "Firebase", "Android", "Web", "Flutter", "Security & DevOps"].map(
-  (track) => ({ name: "Speaker TBA", role: track })
-);
+// Speakers on 24th October, in agenda order. Photos go in public/speakers/.
+const SPEAKERS: Speaker[] = [
+  { name: "Mohit Gulati", role: "Senior Product Manager, Google", topic: "Safely Succeeding in the Age of Agentic AI", image: "/speakers/mohit-gulati.webp" },
+  { name: "Aprajita Verma", role: "Frontend Architect, Mycom | WTM Ambassador", topic: "The Cheapest Token (Is the One You Never Send)", image: "/speakers/aprajita-verma.webp", linkedin: "https://www.linkedin.com/in/aprajita-verma-19522814a/" },
+  { name: "Hemant Gupta", role: "Senior Software Engineer, Agoda", topic: "The Agent Worked. The System Didn't.", image: "/speakers/hemant-gupta.webp", linkedin: "https://www.linkedin.com/in/hemant-gupta-8b1674177/" },
+  { name: "Belal Khan", role: "Google Developer Expert | YouTube @SimplifiedCoding", image: "/speakers/belal-khan.webp", linkedin: "https://www.linkedin.com/in/probelalkhan", website: "https://simplifiedcoding.net" },
+  { name: "Srushti Raybhoge", role: "SDE-2, Addepar | Google Developer Expert", topic: "Guardrails & Gatekeepers: Bulletproof Your AI Applications with Firebase", image: "/speakers/srushti-raybhoge.webp", linkedin: "https://www.linkedin.com/in/srushti-raybhoge/", website: "https://srushti-raybhoge.in" },
+  {
+    name: "Rajani Ekunde",
+    role: "Google Developer Expert | Docker Captain | WTM Ambassador",
+    topic: "Your Agent Just Ran rm -rf: Sandboxing AI Agents from Docker to GKE Agent Sandbox",
+    image: "/speakers/rajani-ekunde.webp",
+    linkedin: "https://www.linkedin.com/in/rajani103/",
+  },
+  { name: "Rishi Mondal", role: "SRE, Obmondo | CNCF KubeStellar Maintainer | Docker Captain", topic: "Your Agent Just Ran rm -rf: Sandboxing AI Agents from Docker to GKE Agent Sandbox", image: "/speakers/rishi-mondal.webp", linkedin: "https://www.linkedin.com/in/rishi-mondal-5238b2282/" },
+  { name: "Abhishek Verma", role: "Senior Software Engineer, Exerp", topic: "Serverless Computing with Spring Cloud Function", image: "/speakers/abhishek-verma.webp" },
+];
 
 export default function SpeakersPage() {
   return (
