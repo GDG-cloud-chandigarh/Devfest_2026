@@ -8,7 +8,7 @@ import { TICKETS_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Schedule",
-  description: "The DevFest Chandigarh 2026 agenda for Saturday 24th October at C2 Auditorium, Chandigarh University, 9:00 AM to 5:15 PM: talks on agentic AI, Firebase, sandboxing agents and serverless, a panel, a quiz and swags.",
+  description: "The DevFest Chandigarh 2026 agenda for Saturday 24th October at C2 Auditorium, Chandigarh University, 9:00 AM to 5:15 PM: talks on agentic AI, Android, Firebase, sandboxing agents and serverless, a panel, a quiz and swags.",
   alternates: { canonical: "/schedule" },
 };
 
@@ -57,8 +57,8 @@ const ITEMS: TimelineItem[] = [
   {
     id: "belal",
     label: "12:15 PM to 1:00 PM",
-    title: "Technical Talk: Modern Software Workflows",
-    description: "Belal Khan, Google Developer Expert, YouTube @SimplifiedCoding. Topic to be announced.",
+    title: "Building AI-Powered Android Apps with Gemma and RAG",
+    description: "Belal Khan, Google Developer Expert, YouTube @SimplifiedCoding",
     icon: <Presentation />,
     accent: "bg-google-blue/20",
   },

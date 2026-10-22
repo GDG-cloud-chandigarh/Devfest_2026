@@ -17,7 +17,7 @@ const SPEAKERS: Speaker[] = [
   { name: "Mohit Gulati", role: "Senior Product Manager, Google", topic: "Safely Succeeding in the Age of Agentic AI", image: "/speakers/mohit-gulati.webp" },
   { name: "Aprajita Verma", role: "Frontend Architect, Mycom | WTM Ambassador", topic: "The Cheapest Token (Is the One You Never Send)", image: "/speakers/aprajita-verma.webp", linkedin: "https://www.linkedin.com/in/aprajita-verma-19522814a/" },
   { name: "Hemant Gupta", role: "Senior Software Engineer, Agoda", topic: "The Agent Worked. The System Didn't.", image: "/speakers/hemant-gupta.webp", linkedin: "https://www.linkedin.com/in/hemant-gupta-8b1674177/" },
-  { name: "Belal Khan", role: "Google Developer Expert | YouTube @SimplifiedCoding", image: "/speakers/belal-khan.webp", linkedin: "https://www.linkedin.com/in/probelalkhan", website: "https://simplifiedcoding.net" },
+  { name: "Belal Khan", role: "Google Developer Expert | YouTube @SimplifiedCoding", topic: "Building AI-Powered Android Apps with Gemma and RAG", image: "/speakers/belal-khan.webp", linkedin: "https://www.linkedin.com/in/probelalkhan", website: "https://simplifiedcoding.net" },
   { name: "Srushti Raybhoge", role: "SDE-2, Addepar | Google Developer Expert", topic: "Guardrails & Gatekeepers: Bulletproof Your AI Applications with Firebase", image: "/speakers/srushti-raybhoge.webp", linkedin: "https://www.linkedin.com/in/srushti-raybhoge/", website: "https://srushti-raybhoge.in" },
   {
     name: "Rajani Ekunde",
